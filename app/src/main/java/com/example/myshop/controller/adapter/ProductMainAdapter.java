@@ -1,21 +1,28 @@
 package com.example.myshop.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
 import com.example.myshop.R;
 import com.example.myshop.controller.activity.MainActivity;
 import com.example.myshop.controller.fragment.DetailsProductFragment;
 import com.example.myshop.model.product.Product;
-import com.example.myshop.network.volley.MyVolley;
+import com.example.myshop.network.volley.VolleyRepository;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,10 +30,14 @@ public class ProductMainAdapter extends RecyclerView.Adapter {
 
     private List<Product> mProducts;
     private Context mContext;
+    private ImageLoader mImageLoader;
 
     public ProductMainAdapter(List<Product> products, Context context) {
         mProducts = products;
         mContext = context;
+        mImageLoader = VolleyRepository.getInstance(mContext).getImageLoader();
+
+
     }
 
     public void setProducts(List<Product> products) {
@@ -58,7 +69,7 @@ public class ProductMainAdapter extends RecyclerView.Adapter {
 
     public class ProductMainViewHolder extends RecyclerView.ViewHolder {
         private Product mProduct;
-        private NetworkImageView mNetworkImageViewProduct;
+        private ImageView mNetworkImageViewProduct;
         private TextView mTextViewName;
         private TextView mTextViewPrice;
 
@@ -83,9 +94,18 @@ public class ProductMainAdapter extends RecyclerView.Adapter {
             mTextViewPrice.setText(product.getPrice());
         }
 
-        private void setNetworkImageView() {
-            mNetworkImageViewProduct.setImageUrl(mProduct.getImages().get(0).getSrc(),
-                    MyVolley.getInstance(mContext).getImageLoader());
+        private void setNetworkImageView()  {
+            String url ;
+            if (mProduct.getImages().size()!=0) {
+                url = mProduct.getImages().get(0).getSrc();
+                Picasso.get().load(url).placeholder(R.drawable.alt).into(mNetworkImageViewProduct);
+            }
+
+            else {
+                Picasso.get().load(R.drawable.alt).into(mNetworkImageViewProduct);
+
+            }
+
         }
 
     }

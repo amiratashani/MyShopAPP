@@ -3,7 +3,6 @@ package com.example.myshop.controller.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,8 +21,9 @@ import com.example.myshop.ProductGridItemDecoration;
 import com.example.myshop.R;
 import com.example.myshop.controller.adapter.ProductMainAdapter;
 import com.example.myshop.controller.adapter.ImageSliderAdapter;
+import com.example.myshop.controller.repository.MyShopRepository;
 import com.example.myshop.model.product.Product;
-import com.example.myshop.network.volley.MyVolley;
+import com.example.myshop.network.volley.VolleyRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -83,18 +83,17 @@ public class MainFragment extends Fragment {
     }
 
 
-
     private void initUi(View view) {
         mSV = view.findViewById(R.id.fragment_main_image_slider);
         mRVLatestProducts = view.findViewById(R.id.fragment_main_rv_latestProducts);
         mRVPopularProducts = view.findViewById(R.id.fragment_main_rv_popularProducts);
         mRVMostRateProducts = view.findViewById(R.id.fragment_main_rv_mostRateProducts);
         mDrawerLayout = view.findViewById(R.id.drawer_layout);
-        mIBToggleButton =view.findViewById(R.id.toolbar_fragment_main_ib_toggleButton);
+        mIBToggleButton = view.findViewById(R.id.toolbar_fragment_main_ib_toggleButton);
 
     }
 
-    private void setToolbarButtonListener(){
+    private void setToolbarButtonListener() {
         mIBToggleButton.setOnClickListener(v -> mDrawerLayout.openDrawer(Gravity.RIGHT));
     }
 
@@ -134,9 +133,9 @@ public class MainFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        mPopularProductMainAdapter=null;
-        mLatestProductMainAdapter=null;
-        mMostRateProductMainAdapter=null;
+        mPopularProductMainAdapter = null;
+        mLatestProductMainAdapter = null;
+        mMostRateProductMainAdapter = null;
     }
 
     private void setAllRecyclerView() {
@@ -181,58 +180,19 @@ public class MainFragment extends Fragment {
     }
 
 
-
     private void setLatestProducts() {
-        String Url = MyVolley.getInstance(getContext()).getProductsUrl("date");
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null,
-                response -> {
-                    Gson gson = new Gson();
-                    Type founderListType = new TypeToken<ArrayList<Product>>() {
-                    }.getType();
-                    List<Product> products = gson.fromJson(response.toString(), founderListType);
-                    Log.i(TAG_MAIN_FRAGMENT, "setLatestProducts ");
-                    setAdapterLatestProducts(products);
+        setAdapterLatestProducts(MyShopRepository.getInstance(getContext()).getLatestProducts());
 
-                },
-                error -> {
-                });
 
-        MyVolley.getInstance(getContext()).addToRequestQueue(request);
     }
 
     private void setPopularProducts() {
-        String Url = MyVolley.getInstance(getContext()).getProductsUrl("popularity");
-
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null,
-                response -> {
-                    Gson gson = new Gson();
-                    Type founderListType = new TypeToken<ArrayList<Product>>() {
-                    }.getType();
-                    List<Product> products = gson.fromJson(response.toString(), founderListType);
-                    setAdapterPopularProducts(products);
-                },
-                error -> {
-                });
-
-        MyVolley.getInstance(getContext()).addToRequestQueue(request);
+        setAdapterPopularProducts(MyShopRepository.getInstance(getContext()).getPopularProducts());
     }
 
     private void setMostRateProducts() {
-        String Url = MyVolley.getInstance(getContext()).getProductsUrl("rating");
-
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null,
-                response -> {
-                    Gson gson = new Gson();
-                    Type founderListType = new TypeToken<ArrayList<Product>>() {
-                    }.getType();
-                    List<Product> products = gson.fromJson(response.toString(), founderListType);
-                    setAdapterMostRateProducts(products);
-                },
-                error -> {
-                });
-
-        MyVolley.getInstance(getContext()).addToRequestQueue(request);
+        setAdapterMostRateProducts(MyShopRepository.getInstance(getContext()).getMostRateProducts());
     }
 
 

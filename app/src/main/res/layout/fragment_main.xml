@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".controller.fragment.MainFragment">
+
+    <include layout="@layout/toolbar_fragment_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/fragment_main_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/parentLayoutDynamicList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffeeeeee"
+            android:orientation="vertical"
+            android:paddingBottom="0.0dp">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/fragment_main_image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+
+                    app:sliderAutoCycleDirection="left"
+                    app:sliderAutoCycleEnabled="false"
+                    app:sliderCircularHandlerEnabled="true"
+
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="10dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="1.5dp"
+                    app:sliderIndicatorSelectedColor="#FFF"
+                    app:sliderIndicatorUnselectedColor="#5A5A5A"
+                    app:sliderScrollTimeInSec="1" />
+
+            <!--// recycle -->
+            <RelativeLayout
+                android:id="@+id/fragment_main_rl_popularProductsFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffeeeeee"
+                android:paddingTop="16.0dip"
+                android:paddingBottom="16.0dip">
+
+                <RelativeLayout
+                    android:id="@+id/fragment_main_rl_popularProductsHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48.0dip"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8.0dip"
+                    android:paddingEnd="16.0dip">
+
+                    <TextView
+                        android:id="@+id/fragment_main_tv_popularProductsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end|center"
+                        android:lines="1"
+                        android:text="مجبوب ترین محصولات"
+                        android:textColor="@color/bluegrey_dark"
+                        android:textSize="14.0sp" />
+
+                    <TextView
+                        android:id="@+id/fragment_main_b_seeMorePopularProducts"
+                        android:layout_width="64.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/complete_list"
+                        android:textColor="@color/main_pages_see_more"
+                        android:textSize="13.0sp" />
+
+                </RelativeLayout>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_main_rv_popularProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_main_rl_popularProductsHeader"
+                    android:background="@color/gray_200"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fragment_main_rl_latestProductsFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffeeeeee"
+                android:paddingTop="16.0dip"
+                android:paddingBottom="16.0dip">
+
+                <RelativeLayout
+                    android:id="@+id/fragment_main_rl_latestProductsHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48.0dip"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8.0dip"
+                    android:paddingEnd="16.0dip">
+
+                    <TextView
+                        android:id="@+id/fragment_main_tv_latestProductsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end|center"
+                        android:lines="1"
+                        android:text="@string/new_products"
+                        android:textColor="@color/bluegrey_dark"
+                        android:textSize="14.0sp" />
+
+                    <TextView
+                        android:id="@+id/fragment_main_b_seeMoreLatestProducts"
+                        android:layout_width="64.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/complete_list"
+                        android:textColor="@color/main_pages_see_more"
+                        android:textSize="13.0sp" />
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_main_rv_latestProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_main_rl_latestProductsHeader"
+                    android:background="@color/gray_200"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fragment_main_rl_mostRateProductsFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffeeeeee"
+                android:paddingTop="16.0dip"
+                android:paddingBottom="16.0dip">
+
+                <RelativeLayout
+                    android:id="@+id/fragment_main_rl_mostRateProductsHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48.0dip"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8.0dip"
+                    android:paddingEnd="16.0dip">
+
+                    <TextView
+                        android:id="@+id/fragment_main_tv_mostRateProductsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end|center"
+                        android:lines="1"
+                        android:text="بیشترین امتیاز"
+                        android:textColor="@color/bluegrey_dark"
+                        android:textSize="14.0sp" />
+
+                    <TextView
+                        android:id="@+id/fragment_main_b_seeMostRateProducts"
+                        android:layout_width="64.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/complete_list"
+                        android:textColor="@color/main_pages_see_more"
+                        android:textSize="13.0sp" />
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_main_rv_mostRateProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_main_rl_mostRateProductsHeader"
+                    android:background="@color/gray_200"/>
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

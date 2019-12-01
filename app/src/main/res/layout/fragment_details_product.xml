@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.fragment.DetailsProductFragment">
+    <include layout="@layout/toolbar_fragment_details_product" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/fragment_details_product_nsv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/activityProductDetails_rl_parallaxBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_grey200">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/activityProductDetails_vp_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="336dp" />
+
+                <RelativeLayout
+                    android:id="@+id/activityProductDetails_rl_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activityProductDetails_vp_gallery"
+                    android:background="@color/white_grey50"
+                    android:gravity="center_vertical"
+                    android:minHeight="68.0dip"
+                    android:paddingBottom="8.0dip">
+
+                    <LinearLayout
+                        android:id="@+id/activity_product_details_below_gallery_toolbar"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_grey50"
+                        android:orientation="horizontal"
+                        android:paddingRight="8.0dip">
+
+                        <ImageButton
+                            android:id="@+id/activity_product_details_share_button"
+                            android:layout_width="48.0dip"
+                            android:layout_height="48.0dip"
+                            android:background="@drawable/hover_oval_dark"
+                            android:src="@drawable/share" />
+
+                        <ImageButton
+                            android:id="@+id/activity_product_details_notify_me_button"
+                            android:layout_width="48.0dip"
+                            android:layout_height="48.0dip"
+                            android:background="@drawable/hover_oval_dark"
+                            android:src="@drawable/notify" />
+
+                        <ImageButton
+                            android:id="@+id/activity_product_details_favorite_button"
+                            android:layout_width="48.0dip"
+                            android:layout_height="48.0dip"
+                            android:background="@drawable/hover_oval_dark"
+                            android:src="@drawable/wishlist" />
+
+                        <LinearLayout
+                            android:id="@+id/activityProductDetails_ll_colorsContainer"
+                            android:layout_width="0.0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center"
+                            android:layout_marginLeft="8.0dip"
+                            android:layout_weight="1.0"
+                            android:gravity="right"
+                            android:orientation="horizontal" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/activityProductDetails_tv_mainTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/activity_product_details_below_gallery_toolbar"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginRight="16.0dip"
+                        android:gravity="right|center"
+                        android:textColor="@color/black_dark"
+                        android:textSize="17.0sp" />
+
+                    <TextView
+                        android:id="@+id/activityProductDetails_tv_secondaryTitle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/activityProductDetails_tv_mainTitle"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginTop="4.0dip"
+                        android:layout_marginRight="16.0dip"
+                        android:layout_marginBottom="4.0dip"
+                        android:gravity="right|center"
+                        android:textColor="@color/black_dark_54"
+                        android:textSize="14.0sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/activityProductDetails_ll_buttons"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activityProductDetails_rl_title"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="2.0dip"
+                    android:layout_marginRight="16.0dip"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/activityProductDetails_cv_commentBtn"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5.0dip"
+                        android:layout_marginRight="3.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_weight="1.0"
+                        app:cardBackgroundColor="@color/white_pure"
+                        app:cardCornerRadius="2.0dip"
+                        app:cardElevation="2.0dip"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:id="@+id/activityProductDetails_rl_commentBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="40.0dip"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="@drawable/hover_roundedrectangle"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8.0dip"
+                                    android:gravity="center"
+                                    android:text="نظرات کاربران"
+                                    android:textColor="@color/bluegrey_dark"
+                                    android:textSize="14.0sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="18.0dip"
+                                    android:layout_height="18.0dip"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_forum_grey600_18dp" />
+
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/activityProductDetails_cv_specBtn"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="3.0dip"
+                        android:layout_marginTop="5.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_weight="1.0"
+                        app:cardBackgroundColor="@color/white_pure"
+                        app:cardCornerRadius="2.0dip"
+                        app:cardElevation="2.0dip"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:id="@+id/activityProductDetails_rl_specBtn"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40.0dip"
+                            android:background="@drawable/hover_roundedrectangle"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8.0dip"
+                                    android:gravity="center"
+                                    android:text="مشخصات"
+                                    android:textColor="@color/bluegrey_dark"
+                                    android:textSize="14.0sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="18.0dip"
+                                    android:layout_height="18.0dip"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_content_paste_grey600_18dp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/activityProductDetails_cv_config"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activityProductDetails_ll_buttons"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginRight="16.0dip"
+                    android:layout_marginBottom="6.0dip"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/white_pure"
+                    app:cardCornerRadius="2.0dip"
+                    app:cardElevation="2.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8.0dip"
+                        android:paddingBottom="12.0dip"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/activityProductDetails_not_exist_text_view"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="ناموجود"
+                            android:textColor="@color/red_500"
+                            android:textSize="18.0sp"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/activityProductDetails_config_layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:id="@+id/activityProductDetails_tv_size_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentRight="true"
+                                android:paddingRight="16.0dip"
+                                android:text="رنگ"
+                                android:textColor="@color/blackTextOnWhiteBackground"
+                                android:textSize="14.0sp" />
+
+                            <TextView
+                                android:id="@+id/activityProductDetails_tv_size_color_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:paddingLeft="16.0dip"
+                                android:text="1 رنگ"
+                                android:textColor="@color/black_dark_54"
+                                android:textSize="13.0sp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/activityProductDetails_rv_size_color"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/activityProductDetails_tv_size_color"
+                                android:clipToPadding="false"
+                                android:paddingLeft="12.0dip"
+                                android:paddingRight="12.0dip"
+                                android:paddingBottom="8.0dip" />
+
+                            <LinearLayout
+                                android:id="@+id/activityProductDetails_rl_config_refresh"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/activityProductDetails_rv_size_color"
+                                android:gravity="right"
+                                android:orientation="vertical"
+                                android:paddingLeft="16.0dip"
+                                android:paddingRight="16.0dip">
+
+                                <View
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="1.0dip"
+                                    android:layout_marginTop="10.0dip"
+                                    android:layout_marginBottom="10.0dip"
+                                    android:background="@color/gray_200" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/activityProductDetails_ll_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true">
+
+                                    <TextView
+                                        android:id="@+id/activityProductDetails_tv_payablePrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:padding="4.0dip"
+                                        android:text="50000"
+                                        android:textColor="@color/green_light"
+                                        android:textSize="20.0sp" />
+
+                                    <TextView
+                                        android:id="@+id/activityProductDetails_tv_price"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:padding="0.0dip"
+                                        android:text="550000"
+                                        android:textColor="@color/red_light"
+                                        android:textSize="14.0sp" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/activityProductDetails_addToCartBtn_layout"
+                                android:layout_width="match_parent"
+                               android:layout_margin="20dp"
+                                android:layout_height="48.0dip"
+                                android:layout_marginTop="10.0dip"
+                                android:layout_below="@+id/activityProductDetails_rl_config_refresh"
+                                android:background="@drawable/background_btn_categories"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/activityProductDetails_rl_addToCartBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="horizontal"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:id="@+id/activityProductDetails_tv_addToCartName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center_vertical"
+                                        android:gravity="center"
+                                        android:text="افزودن به سبد خرید"
+                                        android:textColor="@color/white_pure"
+                                        android:textSize="17.0sp" />
+
+                                    <View
+                                        android:id="@+id/activityProductDetails_v_addToCartDivider"
+                                        android:layout_width="16.0dip"
+                                        android:layout_height="24.0dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:visibility="visible" />
+
+                                    <ImageView
+                                        android:id="@+id/activityProductDetails_iv_basketIcon"
+                                        android:layout_width="28.0dip"
+                                        android:layout_height="28.0dip"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center"
+                                        android:layout_toRightOf="@id/activityProductDetails_tv_addToCartName"
+                                        android:src="@drawable/ic_add_shopping_cart_2_white_24dp"
+                                        android:textSize="19.0sp"
+                                        android:visibility="visible" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/activityProductDetails_cv_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activityProductDetails_cv_config"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginRight="16.0dip"
+                    android:layout_marginBottom="6.0dip"
+                    app:cardBackgroundColor="@color/white_pure"
+                    app:cardCornerRadius="2.0dip"
+                    app:cardElevation="2.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <TextView
+                            android:id="@+id/fragment_details_product_tv_desc"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:ellipsize="end"
+                            android:gravity="right"
+                            android:lineSpacingExtra="1.5dip"
+                            android:maxLines="8"
+                            android:padding="16.0dip"
+                            android:textColor="@color/black_dark"
+                            android:textSize="15.0sp" />
+
+                        <View
+                            android:id="@+id/activityProductDetails_v_descDivider"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1.0dip"
+                            android:layout_below="@id/fragment_details_product_tv_desc"
+                            android:layout_marginLeft="16.0dip"
+                            android:layout_marginRight="16.0dip"
+                            android:background="@color/dividersColor" />
+
+                        <RelativeLayout
+                            android:id="@+id/ativityProductDetails_rl_expandDescBtn"
+                            android:layout_width="fill_parent"
+                            android:layout_height="48.0dip"
+                            android:layout_below="@id/activityProductDetails_v_descDivider">
+
+                            <TextView
+                                android:id="@+id/ativityProductDetails_tv_expandDesc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36.0dip"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/hover_roundedrectangle"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="8.0dip"
+                                android:paddingRight="8.0dip"
+                                android:text="ادامه مطلب"
+                                android:textColor="@color/secondaryTextColor"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/activityProductDetails_cv_rate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activityProductDetails_cv_desc"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginRight="16.0dip"
+                    android:layout_marginBottom="16.0dip"
+                    app:cardBackgroundColor="@color/white_pure"
+                    app:cardCornerRadius="2.0dip"
+                    app:cardElevation="2.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginTop="16.0dip"
+                        android:layout_marginBottom="16.0dip">
+
+                        <LinearLayout
+                            android:id="@+id/activityProductDetails_rl_stars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+                            <RatingBar
+                                android:id="@+id/activityProductDetails_rb_usersRate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:isIndicator="true"
+                                android:max="10"
+                                android:paddingTop="20.0dip"
+                                android:progressDrawable="@drawable/ratingbar_progressdrawable"
+                                android:stepSize="0.1" />
+
+                            <TextView
+                                android:id="@+id/activityProductDetails_tv_usersRate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4.0dip"
+                                android:layout_marginRight="8.0dip"
+                                android:paddingTop="20.0dip"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/activityProductDetails_tv_commentNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="20.0dip"
+                                android:text="از مجموع ده رای ثبت شده"
+                                android:textColor="@color/secondaryTextColor"
+                                android:textSize="13.0sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="?colorPrimary">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0.0dip"
+        app:contentInsetEnd="0.0dip"
+        app:contentInsetStart="0.0dip"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:layout_centerVertical="true"
+                android:id="@+id/toolbar_fragment_main_ib_toggleButton"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/hover_oval"
+                android:layout_margin="4.0dip"
+                android:padding="12.0dip"
+                android:src="@drawable/ic_navigation" />
+
+
+            <ImageView
+                android:id="@+id/toolbarHomeActionbar_iv_digikalaIC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toStartOf="@+id/toolbar_fragment_main_ib_toggleButton"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_digikala_white_24dp" />
+
+            <ImageButton
+                android:layout_centerVertical="true"
+                android:id="@+id/toolbarHomeActionbar_iv_searchIcButton"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_toEndOf="@id/toolbarHomeActionbar_iv_cartButton"
+                android:background="@drawable/hover_oval"
+                android:layout_marginTop="4.0dip"
+
+                android:layout_marginBottom="4.0dip"
+                android:src="@drawable/ic_search_white_24dp" />
+
+            <ImageButton
+                android:id="@+id/toolbarHomeActionbar_iv_cartButton"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_marginTop="4.0dip"
+                android:layout_marginBottom="4.0dip"
+                android:padding="12.0dip"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/hover_oval"
+                android:src="@drawable/ic_shopping_cart_white_24dp" />
+
+            <TextView
+                android:id="@+id/toolbarHomeActionbar_iv_cartCounter"
+                android:layout_width="20.0dip"
+                android:layout_height="20.0dip"
+                android:layout_marginStart="-26.0dip"
+                android:layout_marginTop ="7.0dip"
+                android:layout_toEndOf="@id/toolbarHomeActionbar_iv_cartButton"
+                android:background="@drawable/background_cartcounter"
+                android:gravity="center"
+                android:textColor="#ffef394e"
+                android:textSize="12sp"
+                android:text="5"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>

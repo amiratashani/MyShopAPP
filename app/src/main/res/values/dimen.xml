@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="actionbar_margin">0.0dip</dimen>
+    <dimen name="navigationbarMargin">0.0dip</dimen>
+    <dimen name="toolbarHeight_actionbar">56.0dip</dimen>
+    <dimen name="product_list_appbar_elevation">2.0dip</dimen>
+    <dimen name="product_list_row_spinners_section_height">50.0dip</dimen>
+    <dimen name="product_list_row_product_item_margin">4.0dip</dimen>
+    <dimen name="product_list_fab_size">48.0dip</dimen>
+    <dimen name="activity_product_list_fab_margin">16.0dip</dimen>
+    <dimen name="product_list_fab_padding">12.0dip</dimen>
+</resources>

@@ -10,4 +10,11 @@
     <string name="expand_text_view">ادامه مطلب</string>
     <string name="collapse_text_view">بستن</string>
     <string name="product_categories">دسته بندی محصولات</string>
+    <string name="color_count">%1$d رنگ</string>
+    <string name="sorting">مرتب سازی</string>
+    <string name="filter">فیلتر کردن</string>
+    <string name="filter_on">رنگ، نوع، قیمت و ...</string>
+    <string name="product_list_no_product_message">محصول مورد نظر شما یافت نشد!</string>
+    <string name="special_offer">پیشنهاد ویژه</string>
+    <string name="product_list_tools_product_current_price">۱۲۵ هزار تومان</string>
 </resources>

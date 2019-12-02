@@ -21,6 +21,7 @@ public class MainActivity extends SingleFragmentActivity {
 
     @Override
     public int getLayoutResId() {
+
         return R.layout.activity_main;
     }
 

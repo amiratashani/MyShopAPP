@@ -9,7 +9,12 @@
     <color name="main_pages_see_more">#ff2196f3</color>
     <color name="white_grey200">#ffeeeeee</color>
     <color name="gray_200">#ffeeeeee</color>
+    <color name="gray_300">#ffe0e0e0</color>
+    <color name="gray_400">#ffbdbdbd</color>
+    <color name="gray_500">#ff9e9e9e</color>
     <color name="gray_600">#ff757575</color>
+    <color name="gray_700">#ff616161</color>
+    <color name="gray_800">#ff424242</color>
     <color name="white_grey50">#fffafafa</color>
     <color name="black_dark">#ff3b3b3b</color>
     <color name="black_dark_54">#8a3b3b3b</color>
@@ -24,4 +29,11 @@
     <color name="green_dark">#ff539755</color>
     <color name="adrs_title1">#ff424242</color>
     <color name="adrs_title2">#ff686868</color>
+    <color name="chart_blue">#ff2196f3</color>
+    <color name="back_gray">#ffe8e8e8</color>
+    <color name="black_light">#ff424242</color>
+    <color name="fake_text">#ffa2a2a2</color>
+    <color name="adrs_title3">#ff979797</color>
+    <color name="sponsor_ad_text_color">#ff8b572a</color>
+    <color name="sponsor_ad_back_color">#fffff6ce</color>
 </resources>

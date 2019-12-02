@@ -14,4 +14,22 @@
         <item name="android:scaleType">center</item>
     </style>
 
+    <style name="app_bar_style">
+        <item name="elevation">@dimen/product_list_appbar_elevation</item>
+    </style>
+    <style name="product_items_style">
+        <item name="cardCornerRadius">@dimen/product_list_row_product_card_radius</item>
+        <item name="cardElevation">@dimen/product_list_row_product_card_elevation</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+    <style name="productList_product_items_special_offer">
+        <item name="android:textSize">13.0sp</item>
+        <item name="android:textColor">@color/white_pure</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/background_btn_seemore_normal</item>
+        <item name="android:paddingLeft">@dimen/product_list_row_product_special_offer_badge_padding</item>
+        <item name="android:paddingRight">@dimen/product_list_row_product_special_offer_badge_padding</item>
+        <item name="android:text">@string/special_offer</item>
+    </style>
+
 </resources>

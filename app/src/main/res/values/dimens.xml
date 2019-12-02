@@ -3,5 +3,10 @@
     <dimen name="product_grid_spacing">16dp</dimen>
     <dimen name="product_grid_spacing_small">4dp</dimen>
     <dimen name="product_card_image_height">108dp</dimen>
-
+    <dimen name="product_list_row_product_card_elevation">2.0dip</dimen>
+    <dimen name="product_list_row_product_card_radius">3.0dip</dimen>
+    <dimen name="product_list_product_image_size_large_item">168.0dip</dimen>
+    <dimen name="product_list_standard_margin">8.0dip</dimen>
+    <dimen name="product_list_standard_margin_x2">16.0dip</dimen>
+    <dimen name="product_list_row_product_special_offer_badge_padding">5.0dip</dimen>
 </resources>

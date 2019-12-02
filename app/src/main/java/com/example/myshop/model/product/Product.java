@@ -14,6 +14,7 @@ public class Product {
     private String permalink;
     private String price;
     private List<ProductImage> images;
+    private List<ProductAttributes> attributes;
 
     public int getId() {
         return id;
@@ -65,5 +66,13 @@ public class Product {
 
     public void setImages(List<ProductImage> images) {
         this.images = images;
+    }
+
+    public List<ProductAttributes> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<ProductAttributes> attributes) {
+        this.attributes = attributes;
     }
 }

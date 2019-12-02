@@ -1,9 +1,7 @@
 package com.example.myshop.controller.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,7 @@ import com.example.myshop.controller.activity.MainActivity;
 import com.example.myshop.controller.fragment.DetailsProductFragment;
 import com.example.myshop.model.product.Product;
 
+import com.example.myshop.utility.Utility;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -82,7 +81,7 @@ public class ProductMainAdapter extends RecyclerView.Adapter {
             mProduct = product;
             setNetworkImageView();
             mTextViewName.setText(product.getName());
-            mTextViewPrice.setText(product.getPrice());
+            mTextViewPrice.setText(Utility.addCommaInToNumber().format(Integer.valueOf(product.getPrice())));
         }
 
         private void setNetworkImageView()  {

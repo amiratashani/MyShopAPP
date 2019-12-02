@@ -36,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
         fetcherTask.execute();
     }
 
-
     private void setLatestProducts() {
         String Url = VolleyRepository.getInstance(this).getProductsUrl("date");
         RequestFuture<JSONArray> future = RequestFuture.newFuture();
@@ -51,7 +50,6 @@ public class SplashActivity extends AppCompatActivity {
             // exception handling
         }
     }
-
 
     private void setPopularProducts() {
         String Url = VolleyRepository.getInstance(this).getProductsUrl("popularity");
@@ -85,7 +83,6 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-
     private void getCategories() {
         String Url = VolleyRepository.getInstance(this).getCategories(String.valueOf(100));
 
@@ -102,17 +99,13 @@ public class SplashActivity extends AppCompatActivity {
                 List<Category> parentCategories = categories.stream().filter(category -> category.getParent() == 0).collect(Collectors.toList());
 
                 parentCategories.forEach(category ->
-
                         category.setSubCategory(
                                 categories.stream().filter(allCategory -> allCategory.getParent() == category.getId()).collect(Collectors.toList())
-
                         )
                 );
 
 
-
                 MyShopRepository.getInstance(this).setParentCategory(parentCategories);
-                Log.i("kjk", "getCategories: ");
             }
 
 
@@ -131,7 +124,7 @@ public class SplashActivity extends AppCompatActivity {
             setLatestProducts();
             setPopularProducts();
             setMostRateProducts();
-           getCategories();
+            getCategories();
             return null;
         }
 

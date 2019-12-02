@@ -9,4 +9,5 @@
     <string name="close">Close</string>
     <string name="expand_text_view">ادامه مطلب</string>
     <string name="collapse_text_view">بستن</string>
+    <string name="product_categories">دسته بندی محصولات</string>
 </resources>

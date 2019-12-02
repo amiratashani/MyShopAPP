@@ -22,4 +22,6 @@
     <color name="red_light">#ffef394e</color>
     <color name="red_dark">#ffef394e</color>
     <color name="green_dark">#ff539755</color>
+    <color name="adrs_title1">#ff424242</color>
+    <color name="adrs_title2">#ff686868</color>
 </resources>

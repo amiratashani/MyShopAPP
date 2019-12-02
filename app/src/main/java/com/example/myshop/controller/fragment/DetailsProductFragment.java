@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.transition.TransitionManager;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,8 +132,8 @@ public class DetailsProductFragment extends Fragment {
                 response -> {
                     Gson gson = new Gson();
                     mProduct = gson.fromJson(response.toString(), Product.class);
-                    mTVDescProduct.setText(mProduct.getDescription());
-                    mTVShortDescProduct.setText(mProduct.getShortDescription());
+                    mTVDescProduct.setText(Html.fromHtml(mProduct.getDescription()));
+                    mTVShortDescProduct.setText(Html.fromHtml(mProduct.getShortDescription()));
                     mTVNameProduct.setText(mProduct.getName());
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {

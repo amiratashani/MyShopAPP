@@ -13,15 +13,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
+
 import com.example.myshop.R;
 import com.example.myshop.controller.activity.MainActivity;
 import com.example.myshop.controller.fragment.DetailsProductFragment;
 import com.example.myshop.model.product.Product;
-import com.example.myshop.network.volley.VolleyRepository;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,23 +27,17 @@ public class ProductMainAdapter extends RecyclerView.Adapter {
 
     private List<Product> mProducts;
     private Context mContext;
-    private ImageLoader mImageLoader;
 
     public ProductMainAdapter(List<Product> products, Context context) {
         mProducts = products;
         mContext = context;
-        mImageLoader = VolleyRepository.getInstance(mContext).getImageLoader();
-
-
     }
 
     public void setProducts(List<Product> products) {
         mProducts = products;
     }
 
-    public void setContext(Context context) {
-        mContext = context;
-    }
+
 
     @NonNull
     @Override

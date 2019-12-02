@@ -3,6 +3,8 @@ package com.example.myshop.controller.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,26 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.android.volley.Request;
-import com.android.volley.toolbox.JsonArrayRequest;
+
 import com.example.myshop.ProductGridItemDecoration;
 import com.example.myshop.R;
 import com.example.myshop.controller.adapter.ProductMainAdapter;
 import com.example.myshop.controller.adapter.ImageSliderAdapter;
 import com.example.myshop.controller.repository.MyShopRepository;
 import com.example.myshop.model.product.Product;
-import com.example.myshop.network.volley.VolleyRepository;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
+import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,17 +41,17 @@ import java.util.List;
  */
 public class MainFragment extends Fragment {
 
-
     public static final String TAG_MAIN_FRAGMENT = "MainFragment";
+
     private SliderView mSV;
     private RecyclerView mRVLatestProducts;
     private RecyclerView mRVPopularProducts;
     private RecyclerView mRVMostRateProducts;
-    private ImageSliderAdapter mImageSliderAdapter;
-
     private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
     private ImageButton mIBToggleButton;
 
+    private ImageSliderAdapter mImageSliderAdapter;
     private ProductMainAdapter mLatestProductMainAdapter;
     private ProductMainAdapter mPopularProductMainAdapter;
     private ProductMainAdapter mMostRateProductMainAdapter;
@@ -67,7 +67,6 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.navigation_drawer, container, false);
@@ -78,10 +77,19 @@ public class MainFragment extends Fragment {
         setLatestProducts();
         setPopularProducts();
         setMostRateProducts();
+        setupDrawerContent();
         Log.i(TAG_MAIN_FRAGMENT, "onCreateView:onCreateView ");
         return view;
     }
 
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mPopularProductMainAdapter = null;
+        mLatestProductMainAdapter = null;
+        mMostRateProductMainAdapter = null;
+    }
 
     private void initUi(View view) {
         mSV = view.findViewById(R.id.fragment_main_image_slider);
@@ -90,11 +98,11 @@ public class MainFragment extends Fragment {
         mRVMostRateProducts = view.findViewById(R.id.fragment_main_rv_mostRateProducts);
         mDrawerLayout = view.findViewById(R.id.drawer_layout);
         mIBToggleButton = view.findViewById(R.id.toolbar_fragment_main_ib_toggleButton);
-
+        mNavigationView = view.findViewById(R.id.navigation);
     }
 
     private void setToolbarButtonListener() {
-        mIBToggleButton.setOnClickListener(v -> mDrawerLayout.openDrawer(Gravity.RIGHT));
+        mIBToggleButton.setOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.END));
     }
 
     private void setAdapterLatestProducts(List<Product> products) {
@@ -128,14 +136,6 @@ public class MainFragment extends Fragment {
             mMostRateProductMainAdapter.notifyDataSetChanged();
 
         }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mPopularProductMainAdapter = null;
-        mLatestProductMainAdapter = null;
-        mMostRateProductMainAdapter = null;
     }
 
     private void setAllRecyclerView() {
@@ -179,7 +179,6 @@ public class MainFragment extends Fragment {
 
     }
 
-
     private void setLatestProducts() {
 
         setAdapterLatestProducts(MyShopRepository.getInstance(getContext()).getLatestProducts());
@@ -194,6 +193,24 @@ public class MainFragment extends Fragment {
     private void setMostRateProducts() {
         setAdapterMostRateProducts(MyShopRepository.getInstance(getContext()).getMostRateProducts());
     }
+
+    public void setupDrawerContent() {
+        mNavigationView.setNavigationItemSelectedListener(menuItem -> {
+
+            switch (menuItem.getItemId()) {
+
+                case R.id.nav_listProduct:
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, CategoriesProductFragment.newInstance())
+                            .addToBackStack(null)
+                            .commit();
+                    break;
+            }
+            mDrawerLayout.closeDrawer(GravityCompat.END);
+            return true;
+        });
+    }
+
 
 
 }

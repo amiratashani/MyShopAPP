@@ -5,19 +5,38 @@
     android:id="@+id/scene_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.fragment.DetailsProductFragment">
+    tools:context=".controller.fragment.ProductDetailsFragment">
 
     <include
         android:id="@+id/thisToolbar"
-        layout="@layout/toolbar_fragment_details_product" />
+        layout="@layout/toolbar_fragment_product_details" />
 
     <RelativeLayout
-        android:layout_below="@id/thisToolbar"
+        android:id="@+id/fragment_product_details_rl_progressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:visibility="visible">
+        <ProgressBar
+            android:layout_width="60.0dip"
+            android:layout_height="60.0dip"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary"
+            android:padding="12.0dip"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_product_details_rl_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thisToolbar"
+        android:visibility="gone">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/fragment_details_product_nsv"
+            android:id="@+id/fragment_product_details_nsv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
@@ -36,7 +55,7 @@
                     android:background="@color/white_grey200">
 
                     <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/fragment_details_product_sv_gallery"
+                        android:id="@+id/fragment_product_details_sv_gallery"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
 
@@ -51,14 +70,13 @@
                         app:sliderIndicatorRadius="1.5dp"
                         app:sliderIndicatorSelectedColor="@color/colorPrimary"
                         app:sliderIndicatorUnselectedColor="@color/gray_600"
-                        app:sliderScrollTimeInSec="1"
-                        />
+                        app:sliderScrollTimeInSec="1" />
 
                     <RelativeLayout
                         android:id="@+id/activityProductDetails_rl_title"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/fragment_details_product_sv_gallery"
+                        android:layout_below="@id/fragment_product_details_sv_gallery"
                         android:background="@color/white_grey50"
                         android:gravity="center_vertical"
                         android:minHeight="68.0dip"
@@ -105,7 +123,7 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/fragment_details_product_tv_nameProduct"
+                            android:id="@+id/fragment_product_details_tv_nameProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/activity_product_details_below_gallery_toolbar"
@@ -117,10 +135,10 @@
                             android:textSize="17.0sp" />
 
                         <TextView
-                            android:id="@+id/fragment_details_product_tv_shortDescProduct"
+                            android:id="@+id/fragment_product_details_tv_shortDescProduct"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/fragment_details_product_tv_nameProduct"
+                            android:layout_below="@id/fragment_product_details_tv_nameProduct"
                             android:layout_marginLeft="16.0dip"
                             android:layout_marginTop="4.0dip"
                             android:layout_marginRight="16.0dip"
@@ -162,12 +180,12 @@
                             app:cardUseCompatPadding="true">
 
                             <RelativeLayout
-                                android:id="@+id/fragment_details_product_rl_commentBtn"
+                                android:id="@+id/fragment_product_details_rl_commentBtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="40.0dip"
-                                android:focusable="true"
-                                android:clickable="true"
                                 android:background="@drawable/hover_roundedrectangle"
+                                android:clickable="true"
+                                android:focusable="true"
                                 android:gravity="center">
 
                                 <LinearLayout
@@ -212,12 +230,12 @@
                             app:cardUseCompatPadding="true">
 
                             <RelativeLayout
-                                android:id="@+id/fragment_details_product_rl_specBtn"
+                                android:id="@+id/fragment_product_details_rl_specBtn"
                                 android:layout_width="fill_parent"
                                 android:layout_height="40.0dip"
+                                android:background="@drawable/hover_roundedrectangle"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:background="@drawable/hover_roundedrectangle"
                                 android:gravity="center">
 
                                 <LinearLayout
@@ -247,7 +265,6 @@
 
 
                     </LinearLayout>
-
 
 
                     <com.google.android.material.card.MaterialCardView
@@ -291,7 +308,7 @@
                                 android:visibility="visible">
 
                                 <TextView
-                                    android:id="@+id/fragment_details_product_tv_color"
+                                    android:id="@+id/fragment_product_details_tv_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
@@ -302,7 +319,7 @@
                                     android:textSize="14.0sp" />
 
                                 <TextView
-                                    android:id="@+id/fragment_details_product_tv_color_count"
+                                    android:id="@+id/fragment_product_details_tv_color_count"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentLeft="true"
@@ -313,25 +330,24 @@
                                     android:textSize="13.0sp" />
 
                                 <androidx.recyclerview.widget.RecyclerView
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:id="@+id/fragment_details_product_rv_color"
+                                    android:id="@+id/fragment_product_details_rv_color"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/fragment_details_product_tv_color_count"
+                                    android:layout_below="@id/fragment_product_details_tv_color_count"
+                                    android:layout_alignParentRight="true"
+                                    android:clickable="true"
                                     android:clipToPadding="false"
+                                    android:focusable="true"
                                     android:paddingLeft="12.0dip"
                                     android:paddingRight="12.0dip"
-                                    android:layout_alignParentRight="true"
                                     android:paddingBottom="8.0dip" />
-
 
 
                                 <LinearLayout
                                     android:id="@+id/activityProductDetails_rl_config_refresh"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/fragment_details_product_rv_color"
+                                    android:layout_below="@id/fragment_product_details_rv_color"
                                     android:gravity="right"
                                     android:orientation="vertical"
                                     android:paddingLeft="16.0dip"
@@ -342,13 +358,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:drawableRight="@drawable/ic_warranty_24dp"
-                                        android:text="گارانتی اصالت و سلامت فیزیکی کالا"
                                         android:drawablePadding="10.0dip"
                                         android:gravity="right"
                                         android:padding="7.0dip"
+                                        android:text="گارانتی اصالت و سلامت فیزیکی کالا"
                                         android:textColor="@color/black_dark_54"
                                         android:textSize="13.0sp"
                                         android:textStyle="bold" />
+
                                     <View
                                         android:layout_width="wrap_content"
                                         android:layout_height="1.0dip"
@@ -383,24 +400,24 @@
                                         android:id="@+id/activityProductDetails_ll_price"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                       android:orientation="horizontal"
-                                        android:padding="4.0dip"
-                                        android:layout_gravity="left">
+                                        android:layout_gravity="left"
+                                        android:orientation="horizontal"
+                                        android:padding="4.0dip">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_marginRight="8dp"
                                             android:text="تومان"
-                                           android:layout_marginRight="8dp"
                                             android:textColor="@color/green_light"
                                             android:textSize="20.0sp" />
+
                                         <TextView
-                                            android:id="@+id/fragment_details_product_tv_payablePrice"
+                                            android:id="@+id/fragment_product_details_tv_payablePrice"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="@color/green_light"
                                             android:textSize="20.0sp" />
-
 
 
                                     </LinearLayout>
@@ -410,22 +427,22 @@
                                 <RelativeLayout
                                     android:id="@+id/activityProductDetails_addToCartBtn_layout"
                                     android:layout_width="match_parent"
-                                    android:layout_margin="20dp"
                                     android:layout_height="48.0dip"
+                                    android:layout_below="@+id/activityProductDetails_rl_config_refresh"
+                                    android:layout_margin="20dp"
                                     android:layout_marginTop="10.0dip"
+                                    android:background="@drawable/background_btn_categories"
                                     android:clickable="true"
                                     android:focusable="true"
-                                    android:layout_below="@+id/activityProductDetails_rl_config_refresh"
-                                    android:background="@drawable/background_btn_categories"
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
-                                        android:gravity="center_vertical"
                                         android:id="@+id/activityProductDetails_rl_addToCartBtn"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerInParent="true"
+                                        android:gravity="center_vertical"
                                         android:orientation="horizontal"
                                         android:visibility="visible">
 
@@ -490,7 +507,7 @@
                             android:layout_height="fill_parent">
 
                             <TextView
-                                android:id="@+id/fragment_details_product_tv_descProduct"
+                                android:id="@+id/fragment_product_details_tv_descProduct"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
@@ -506,19 +523,19 @@
                                 android:id="@+id/activityProductDetails_v_descDivider"
                                 android:layout_width="fill_parent"
                                 android:layout_height="1.0dip"
-                                android:layout_below="@id/fragment_details_product_tv_descProduct"
+                                android:layout_below="@id/fragment_product_details_tv_descProduct"
                                 android:layout_marginLeft="16.0dip"
                                 android:layout_marginRight="16.0dip"
                                 android:background="@color/dividersColor" />
 
                             <RelativeLayout
-                                android:id="@+id/fragment_details_product_rl_expandDescBtn"
+                                android:id="@+id/fragment_product_details_rl_expandDescBtn"
                                 android:layout_width="fill_parent"
                                 android:layout_height="48.0dip"
                                 android:layout_below="@id/activityProductDetails_v_descDivider">
 
                                 <TextView
-                                    android:id="@+id/fragment_details_product_tv_expandDesc"
+                                    android:id="@+id/fragment_product_details_tv_expandDesc"
                                     android:layout_width="wrap_content"
                                     android:layout_height="36.0dip"
                                     android:layout_centerInParent="true"
@@ -607,7 +624,6 @@
 
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
-
 
 
 </RelativeLayout>

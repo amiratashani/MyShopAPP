@@ -24,21 +24,21 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoriesProductFragment extends Fragment {
+public class ProductCategoriesFragment extends Fragment {
     private ViewPager mVPCategories;
     private TabLayout mTLCategories;
     private CategoriesPagerAdapter mCategoriesPagerAdapter;
 
-    public static CategoriesProductFragment newInstance() {
+    public static ProductCategoriesFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        CategoriesProductFragment fragment = new CategoriesProductFragment();
+        ProductCategoriesFragment fragment = new ProductCategoriesFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public CategoriesProductFragment() {
+    public ProductCategoriesFragment() {
         // Required empty public constructor
     }
 
@@ -46,7 +46,7 @@ public class CategoriesProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_categories_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_categories, container, false);
 
         initUi(view);
         setPagerAdapter();
@@ -55,8 +55,8 @@ public class CategoriesProductFragment extends Fragment {
     }
 
     private void initUi(View view) {
-        mVPCategories = view.findViewById(R.id.fragment_categories_product_vp);
-        mTLCategories = view.findViewById(R.id.fragment_categories_product_tb);
+        mVPCategories = view.findViewById(R.id.fragment_produc_categoriest_vp);
+        mTLCategories = view.findViewById(R.id.fragment_produc_categoriest_tb);
         mTLCategories.setupWithViewPager(mVPCategories);
     }
 
@@ -81,7 +81,7 @@ public class CategoriesProductFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             int categoryId = mCategoryList.get(position).getId();
-            return CategoriesSubFragment.newInstance(categoryId);
+            return SubCategoriesFragment.newInstance(categoryId);
         }
 
         @Nullable

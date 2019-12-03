@@ -74,8 +74,7 @@ public class SplashActivity extends AppCompatActivity {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null, future, future);
         VolleyRepository.getInstance(this).addToRequestQueue(request);
         try {
-            List<Product> products = new Gson().fromJson(future.get().toString(), new TypeToken<ArrayList<Product>>() {
-            }.getType());
+            List<Product> products = new Gson().fromJson(future.get().toString(), new TypeToken<ArrayList<Product>>() {}.getType());
             MyShopRepository.getInstance(this).setMostRateProducts(products);
         } catch (InterruptedException | ExecutionException e) {
             // exception handling

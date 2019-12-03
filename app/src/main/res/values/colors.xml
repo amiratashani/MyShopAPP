@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#ffef394e</color>
     <color name="colorAccent">#D81B60</color>
 
-
+    <color name="back_withe">#ffffffff</color>
     <color name="bluegrey_dark">#ff61747e</color>
     <color name="main_pages_see_more">#ff2196f3</color>
     <color name="white_grey200">#ffeeeeee</color>

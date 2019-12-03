@@ -103,4 +103,13 @@ public class VolleyRepository {
                 .build();
         return url.toString();
     }
+
+    public String getProductWithCategory(String categoryId){
+        Uri url = baseUrl
+                .buildUpon()
+                .appendPath("products")
+                .appendQueryParameter("category",categoryId)
+                .build();
+        return url.toString();
+    }
 }

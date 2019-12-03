@@ -11,7 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myshop.R;
+import com.example.myshop.controller.activity.MainActivity;
+import com.example.myshop.controller.fragment.ProductsListFragment;
 import com.example.myshop.model.category.Category;
+import com.example.myshop.network.volley.VolleyRepository;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,7 +36,7 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_categoris_sub_holder, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_sub_categoris_holder, parent, false);
 
         return new SubCategoriesHolder(view);
     }
@@ -61,6 +64,15 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter {
 
             mTVSubCategoryTitle = itemView.findViewById(R.id.text_view_sub_category_title);
             mIVSubCategoryImage = itemView.findViewById(R.id.image_view_sub_category_image);
+
+            itemView.setOnClickListener(v -> {
+                String url= VolleyRepository.getInstance(mContext).getProductWithCategory(String.valueOf(mSubCategory.getId()));
+                MainActivity mainActivity= (MainActivity) mContext;
+                mainActivity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, ProductsListFragment.newInstance(url))
+                        .addToBackStack(null)
+                        .commit();
+            });
 
         }
 

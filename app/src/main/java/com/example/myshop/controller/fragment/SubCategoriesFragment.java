@@ -17,12 +17,10 @@ import com.example.myshop.controller.adapter.SubCategoriesAdapter;
 import com.example.myshop.controller.repository.MyShopRepository;
 import com.example.myshop.model.category.Category;
 
-import java.util.Optional;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoriesSubFragment extends Fragment {
+public class SubCategoriesFragment extends Fragment {
 
     private static final String ARG_CATEGORY_PARENT_ID = "categoryParentId";
     private int parentCategory;
@@ -31,18 +29,18 @@ public class CategoriesSubFragment extends Fragment {
     private RecyclerView mRVSubCategories;
 
 
-    public static CategoriesSubFragment newInstance(int parentId) {
+    public static SubCategoriesFragment newInstance(int parentId) {
 
         Bundle args = new Bundle();
         args.putInt(ARG_CATEGORY_PARENT_ID, parentId);
 
-        CategoriesSubFragment fragment = new CategoriesSubFragment();
+        SubCategoriesFragment fragment = new SubCategoriesFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
 
-    public CategoriesSubFragment() {
+    public SubCategoriesFragment() {
         // Required empty public constructor
     }
 
@@ -55,7 +53,7 @@ public class CategoriesSubFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_categories_sub, container, false);
+        View view = inflater.inflate(R.layout.fragment_sub_categories, container, false);
 
         initUi(view);
         setSubCategoriesAdapter();
@@ -64,7 +62,7 @@ public class CategoriesSubFragment extends Fragment {
     }
 
     private void initUi(View view) {
-        mRVSubCategories = view.findViewById(R.id.fragment_categories_sub_recycler_view);
+        mRVSubCategories = view.findViewById(R.id.fragment_sub_categories_recycler_view);
         mRVSubCategories.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
         mRVSubCategories.setLayoutManager(gridLayoutManager);

@@ -5,7 +5,7 @@
     android:id="@+id/activity_product_category_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.fragment.CategoriesProductFragment">
+    tools:context=".controller.fragment.ProductCategoriesFragment">
 
 
     <LinearLayout
@@ -64,7 +64,7 @@
             </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/fragment_categories_product_tb"
+                android:id="@+id/fragment_produc_categoriest_tb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?colorPrimary"
@@ -77,7 +77,7 @@
 
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/fragment_categories_product_vp"
+            android:id="@+id/fragment_produc_categoriest_vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
            />

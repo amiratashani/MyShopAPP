@@ -3,7 +3,6 @@ package com.example.myshop.controller.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -11,9 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -21,7 +18,7 @@ import android.widget.ImageButton;
 
 import com.example.myshop.ProductGridItemDecoration;
 import com.example.myshop.R;
-import com.example.myshop.controller.adapter.ProductMainAdapter;
+import com.example.myshop.controller.adapter.ProductListAdapter;
 import com.example.myshop.controller.adapter.ImageSliderAdapter;
 import com.example.myshop.controller.repository.MyShopRepository;
 import com.example.myshop.model.product.Product;
@@ -52,9 +49,9 @@ public class MainFragment extends Fragment {
     private ImageButton mIBToggleButton;
 
     private ImageSliderAdapter mImageSliderAdapter;
-    private ProductMainAdapter mLatestProductMainAdapter;
-    private ProductMainAdapter mPopularProductMainAdapter;
-    private ProductMainAdapter mMostRateProductMainAdapter;
+    private ProductListAdapter mLatestProductListAdapter;
+    private ProductListAdapter mPopularProductListAdapter;
+    private ProductListAdapter mMostRateProductListAdapter;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -86,9 +83,9 @@ public class MainFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        mPopularProductMainAdapter = null;
-        mLatestProductMainAdapter = null;
-        mMostRateProductMainAdapter = null;
+        mPopularProductListAdapter = null;
+        mLatestProductListAdapter = null;
+        mMostRateProductListAdapter = null;
     }
 
     private void initUi(View view) {
@@ -106,34 +103,34 @@ public class MainFragment extends Fragment {
     }
 
     private void setAdapterLatestProducts(List<Product> products) {
-        if (mLatestProductMainAdapter == null) {
-            mLatestProductMainAdapter = new ProductMainAdapter(products, getActivity());
-            mRVLatestProducts.setAdapter(mLatestProductMainAdapter);
+        if (mLatestProductListAdapter == null) {
+            mLatestProductListAdapter = new ProductListAdapter(products, getActivity(), ProductListAdapter.Type.IN_MAIN);
+            mRVLatestProducts.setAdapter(mLatestProductListAdapter);
             Log.i(TAG_MAIN_FRAGMENT, "null ");
         } else {
-            mLatestProductMainAdapter.setProducts(products);
-            mLatestProductMainAdapter.notifyDataSetChanged();
+            mLatestProductListAdapter.setProducts(products);
+            mLatestProductListAdapter.notifyDataSetChanged();
             Log.i(TAG_MAIN_FRAGMENT, "not null ");
         }
     }
 
     private void setAdapterPopularProducts(List<Product> products) {
-        if (mPopularProductMainAdapter == null) {
-            mPopularProductMainAdapter = new ProductMainAdapter(products, getActivity());
-            mRVPopularProducts.setAdapter(mPopularProductMainAdapter);
+        if (mPopularProductListAdapter == null) {
+            mPopularProductListAdapter = new ProductListAdapter(products, getActivity(),ProductListAdapter.Type.IN_MAIN);
+            mRVPopularProducts.setAdapter(mPopularProductListAdapter);
         } else {
-            mPopularProductMainAdapter.setProducts(products);
-            mPopularProductMainAdapter.notifyDataSetChanged();
+            mPopularProductListAdapter.setProducts(products);
+            mPopularProductListAdapter.notifyDataSetChanged();
         }
     }
 
     private void setAdapterMostRateProducts(List<Product> products) {
-        if (mMostRateProductMainAdapter == null) {
-            mMostRateProductMainAdapter = new ProductMainAdapter(products, getActivity());
-            mRVMostRateProducts.setAdapter(mMostRateProductMainAdapter);
+        if (mMostRateProductListAdapter == null) {
+            mMostRateProductListAdapter = new ProductListAdapter(products, getActivity(),ProductListAdapter.Type.IN_MAIN);
+            mRVMostRateProducts.setAdapter(mMostRateProductListAdapter);
         } else {
-            mMostRateProductMainAdapter.setProducts(products);
-            mMostRateProductMainAdapter.notifyDataSetChanged();
+            mMostRateProductListAdapter.setProducts(products);
+            mMostRateProductListAdapter.notifyDataSetChanged();
 
         }
     }
@@ -201,7 +198,7 @@ public class MainFragment extends Fragment {
 
                 case R.id.nav_listProduct:
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, CategoriesProductFragment.newInstance())
+                            .replace(R.id.fragment_container, ProductCategoriesFragment.newInstance())
                             .addToBackStack(null)
                             .commit();
                     break;

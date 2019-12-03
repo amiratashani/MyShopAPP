@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_categories_sub_recycler_view"
-    tools:context=".controller.fragment.CategoriesSubFragment">
+    android:id="@+id/fragment_sub_categories_recycler_view"
+    tools:context=".controller.fragment.SubCategoriesFragment">
 
 
 

@@ -12,7 +12,7 @@ import com.android.volley.toolbox.ImageLoader;
 
 public class VolleyRepository {
 
-    private final String CONSUMER_KEY = "ck_f02g5265ssse3479f7bee8e93bffe5685517b93ec27d";
+    private final String CONSUMER_KEY = "ck_f025265e3479f7bee8e93bffe5685517b93ec27d";
     private final String CONSUMER_SECRET = "cs_27b19e572ac9cf1333d4d53f7082a15e9fb6a2b0";
 
     private Uri baseUrl = Uri.parse("https://woocommerce.maktabsharif.ir/wp-json/wc/v3/")
@@ -76,7 +76,6 @@ public class VolleyRepository {
     }
 
     public String getProductUrl(String id) {
-
         Uri url = baseUrl
                 .buildUpon()
                 .appendPath("products")

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+
+
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="productDetailsViewModel"
+            type="com.example.myshop.viewmodel.ProductDetailsViewModel" />
+    </data>
+
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/row_grid_plist"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
@@ -60,6 +70,7 @@
             android:scrollHorizontally="true"
             android:textColor="@color/adrs_title1"
             android:textSize="12.0sp"
+            android:text="@{productDetailsViewModel.product.name}"
             android:fontFamily="@font/iran_sans"/>
 
         <View
@@ -101,14 +112,14 @@
 
                 <TextView
                     android:id="@+id/holder_tv_productPrice"
-                    tool:text="10.000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="left|center"
                     android:singleLine="true"
                     android:textColor="@color/green_light"
                     android:textSize="12.0sp"
-                    android:fontFamily="@font/iran_sans"/>
+                    android:fontFamily="@font/iran_sans"
+                    android:text="@{productDetailsViewModel.product.price}"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -116,3 +127,6 @@
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

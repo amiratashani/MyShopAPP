@@ -1,4 +1,4 @@
-package com.example.myshop;
+package com.example.myshop.utility;
 
 import android.graphics.Rect;
 import android.view.View;

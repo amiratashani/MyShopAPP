@@ -1,4 +1,4 @@
-package com.example.myshop.controller.adapter;
+package com.example.myshop.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -37,10 +37,6 @@ public class ImageSliderAdapter extends SliderViewAdapter {
 
         SliderMainViewHolder sliderMainViewHolder = (SliderMainViewHolder) viewHolder;
 
-        sliderMainViewHolder.itemView.setOnClickListener(v -> {
-            Toast.makeText(mContext, "This is item in position " + position, Toast.LENGTH_SHORT).show();
-        });
-
         sliderMainViewHolder.bind(mListUrl.get(position));
 
     }
@@ -52,14 +48,12 @@ public class ImageSliderAdapter extends SliderViewAdapter {
 
     public class SliderMainViewHolder extends SliderViewAdapter.ViewHolder {
 
-        View itemView;
         ImageView imageViewBackground;
 
 
         public SliderMainViewHolder(View itemView) {
             super(itemView);
             imageViewBackground = itemView.findViewById(R.id.iv_auto_image_slider);
-            this.itemView = itemView;
         }
 
         private void bind(String url) {

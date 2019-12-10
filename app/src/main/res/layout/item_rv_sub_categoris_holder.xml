@@ -1,36 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
-    android:layout_width="fill_parent"
-    android:layout_height="76.0dip">
-
-    <ImageView
-        android:id="@+id/image_view_sub_category_image"
-        android:layout_width="90.0dip"
-        android:layout_height="60.0dip"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="8.0dip"
-        android:scaleType="fitCenter" />
 
 
-    <TextView
-        android:id="@+id/text_view_sub_category_title"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="categoryViewModel"
+            type="com.example.myshop.viewmodel.CategoryViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/container"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16.0dip"
-        android:layout_marginRight="16.0dip"
-        android:layout_toRightOf="@id/image_view_sub_category_image"
-        android:textColor="@color/adrs_title2"
-        android:textSize="18.0sp" />
+        android:layout_height="76.0dip">
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1.0dip"
-        android:layout_alignParentBottom="true"
-        android:background="@color/dividersColor" />
+        <ImageView
+            android:id="@+id/image_view_sub_category_image"
+            android:layout_width="90.0dip"
+            android:layout_height="60.0dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8.0dip"
+            android:scaleType="fitCenter" />
 
-</RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_view_sub_category_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16.0dip"
+            android:layout_marginRight="16.0dip"
+            android:layout_toRightOf="@id/image_view_sub_category_image"
+            android:textColor="@color/adrs_title2"
+            android:text="@{categoryViewModel.category.name}"
+            android:textSize="18.0sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/dividersColor" />
+
+    </RelativeLayout>
+
+</layout>

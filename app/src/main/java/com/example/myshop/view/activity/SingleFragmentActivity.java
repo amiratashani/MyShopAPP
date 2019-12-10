@@ -1,4 +1,4 @@
-package com.example.myshop.controller.activity;
+package com.example.myshop.view.activity;
 
 import android.os.Bundle;
 
@@ -22,7 +22,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, createFragment())
-                .addToBackStack(null)
+                .addToBackStack("mainFragment")
                 .commit();
     }
 }

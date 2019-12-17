@@ -68,7 +68,7 @@ public class ProductSubCategoriesFragment extends Fragment {
     }
 
     private void setSubCategoriesAdapter() {
-        mSubCategoriesAdapter = new SubCategoriesAdapter(getActivity());
+        mSubCategoriesAdapter = new SubCategoriesAdapter(getActivity(), this);
         mSubCategoriesAdapter.setListSubCategory(mProductCategoriesViewModel.getParentCategories().getValue().get(position).getSubCategory());
         mBinding.fragmentSubCategoriesRecyclerView.setAdapter(mSubCategoriesAdapter);
     }

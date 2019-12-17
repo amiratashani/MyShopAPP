@@ -40,7 +40,6 @@ public class ProductsListFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_products_list, container, false);
@@ -50,9 +49,6 @@ public class ProductsListFragment extends Fragment {
         setProductListAdapter();
         return mBinding.getRoot();
     }
-
-
-
 
     private void setProductListAdapter() {
         mProductListAdapter = new ProductListAdapter(getActivity());
@@ -66,6 +62,7 @@ public class ProductsListFragment extends Fragment {
 
         mBinding.fragmentProductsListRv.setAdapter(mProductListAdapter);
     }
+
     private void setRVProductsListLayout() {
 
         mBinding.fragmentProductsListRv.setHasFixedSize(true);
@@ -76,23 +73,5 @@ public class ProductsListFragment extends Fragment {
         mBinding.fragmentProductsListRv.addItemDecoration(new ProductGridItemDecoration(largePadding, smallPadding));
 
     }
-
-
-//    private void getList() {
-//        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, mRequestUrl, null,
-//                response -> {
-//
-//                    List<Product> productList = new Gson().fromJson(response.toString(), new TypeToken<ArrayList<Product>>() {
-//                    }.getType());
-//
-//                    setProductListAdapter(productList);
-//                    mProgressBar.setVisibility(View.GONE);
-//                    mRVProductsList.setVisibility(View.VISIBLE);
-//                },
-//                error -> {
-//                });
-//
-//        VolleyRepository.getInstance(getActivity()).addToRequestQueue(request);
-//    }
 
 }

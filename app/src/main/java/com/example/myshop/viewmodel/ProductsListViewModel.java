@@ -30,7 +30,7 @@ public class ProductsListViewModel extends AndroidViewModel {
     public ProductsListViewModel(@NonNull Application application) {
         super(application);
         mProductList= new MutableLiveData<>();
-        mUrlRequest =ProductRepository.getInstance().getUrlRequest();
+        mUrlRequest =ProductRepository.getInstance(getApplication()).getUrlRequest();
     }
 
     public LiveData<String> getUrlRequest() {

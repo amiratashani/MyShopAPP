@@ -47,7 +47,6 @@ public class ProductDetailsFragment extends Fragment {
     private ProductDetailsViewModel mProductDetailsViewModel;
 
 
-
     public static ProductDetailsFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -63,14 +62,17 @@ public class ProductDetailsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mProductDetailsViewModel = ViewModelProviders.of(getActivity()).get(ProductDetailsViewModel.class);
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_details, container, false);
-        mProductDetailsViewModel = ViewModelProviders.of(getActivity()).get(ProductDetailsViewModel.class);
         mBinding.setProductDetailsViewModel(mProductDetailsViewModel);
+        mBinding.fragmentProductDetailsToolbar.setProductDetailsViewModel(mProductDetailsViewModel);
+
 
         initUi();
         mProductDetailsViewModel.getProduct().observe(this, product -> {
@@ -84,25 +86,31 @@ public class ProductDetailsFragment extends Fragment {
     }
 
 
+
     private void initUi() {
         mSVGallery = mBinding.fragmentProductDetailsSvGallery;
         mRVColors = mBinding.fragmentProductDetailsRvColor;
     }
 
     private void setButtonListener() {
-
         mBinding.fragmentProductDetailsRlExpandDescBtn.setOnClickListener(v -> {
             TransitionManager.beginDelayedTransition(mBinding.sceneRoot);
 
-            if (mBinding.fragmentProductDetailsTvDescProduct.getMaxLines() == 8) {
+            if (mBinding.fragmentProductDetailsTvDescProduct.getMaxLines() == 2) {
                 mBinding.fragmentProductDetailsTvDescProduct.setMaxLines(100);
                 mBinding.fragmentProductDetailsTvExpandDesc.setText(getResources().getString(R.string.collapse_text_view));
             } else {
-                mBinding.fragmentProductDetailsTvDescProduct.setMaxLines(8);
+                mBinding.fragmentProductDetailsTvDescProduct.setMaxLines(2);
                 mBinding.fragmentProductDetailsTvExpandDesc.setText(getResources().getString(R.string.expand_text_view));
             }
-
         });
+
+        mBinding.fragmentProductDetailRlAddToBasket.setOnClickListener(v -> {
+            mProductDetailsViewModel.addProductToBasketLiveData();
+            mBinding.fragmentProductDetailsToolbar.setProductDetailsViewModel(mProductDetailsViewModel);
+            mBinding.executePendingBindings();
+        });
+
     }
 
     private void setSliderView() {
@@ -144,7 +152,7 @@ public class ProductDetailsFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
             ProductAttributes pA = product.getAttributes().stream()
-                    .filter(productAttributes -> productAttributes.getId() == 1)
+                    .filter(productAttributes -> productAttributes.getId() == 3)
                     .findAny().orElse(null);
 
             if (pA == null) {

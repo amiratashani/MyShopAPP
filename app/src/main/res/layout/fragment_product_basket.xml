@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/activityBasket_rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_grey200"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_grey200"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/fragment_product_basket_tv_null_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/iran_sans_bold"
+                android:gravity="center"
+                android:text="@string/basket_null_message"
+                android:textColor="@color/bluegrey_dark"
+                android:textSize="19.0sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminate="true"
+                android:visibility="gone"
+                android:indeterminateTint="@color/red_light" />
+
+
+            <LinearLayout
+                android:id="@+id/total_sale_price_ly"
+                android:layout_width="match_parent"
+                android:layout_height="48.0dip"
+                android:layout_alignParentTop="true"
+                android:background="@color/white_pure"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+
+                <TextView
+                    android:id="@+id/total_sale_price"
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|center"
+                    android:layout_weight="1.0"
+                    android:background="@color/white_pure"
+                    android:gravity="left|center"
+                    android:paddingLeft="12.0dip"
+                    android:textColor="@color/green_light"
+                    android:textSize="18.0sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/btn_txt"
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center"
+                    android:layout_weight="1.0"
+                    android:background="@color/white_pure"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="right|center"
+                    android:paddingRight="12.0dip"
+                    android:text="@string/total_sale_price"
+                    android:textColor="@color/green_light"
+                    android:textSize="18.0sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/shadow"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dip"
+                android:layout_below="@id/total_sale_price_ly"
+                android:background="@drawable/gradient" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_product_basket_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/complete_buy"
+                android:layout_below="@id/shadow"
+                android:divider="@null"
+                android:dividerHeight="0.0dip"
+                android:paddingLeft="5.0dip"
+                android:paddingRight="5.0dip"
+                android:scrollbars="none"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:fitsSystemWindows="true"
+                android:id="@+id/complete_buy"
+                android:layout_width="match_parent"
+                android:layout_height="56.0dip"
+                android:layout_above="@id/activityProductDetails_v_navigationBarBackground"
+                android:background="@color/green_light"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_chevron_right_white_24dp"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center"
+                    android:text="@string/complete_your_buying"
+                    android:textColor="@color/white_pure"
+                    android:textSize="17.0sp" />
+
+            </LinearLayout>
+
+            <View
+                android:fitsSystemWindows="true"
+                android:id="@+id/activityProductDetails_v_navigationBarBackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigationbarMargin"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black_dark" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

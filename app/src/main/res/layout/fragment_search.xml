@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/animation_color_transition_search_activity"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_search_include"
+            layout="@layout/toolbar_search"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize" />
+
+        <RelativeLayout
+            android:id="@+id/reveal_RelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="54.0dip"
+            android:keepScreenOn="true"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+</layout>

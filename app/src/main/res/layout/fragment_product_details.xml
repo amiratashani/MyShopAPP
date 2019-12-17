@@ -7,6 +7,7 @@
     <data>
 
         <import type="android.text.Html" />
+        <import type="android.view.View" />
 
         <variable
             name="productDetailsViewModel"
@@ -423,19 +424,19 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginRight="8dp"
+                                                android:fontFamily="@font/iran_sans"
                                                 android:text="تومان"
                                                 android:textColor="@color/green_light"
-                                                android:textSize="20.0sp"
-                                                android:fontFamily="@font/iran_sans"/>
+                                                android:textSize="20.0sp" />
 
                                             <TextView
                                                 android:id="@+id/fragment_product_details_tv_payablePrice"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:fontFamily="@font/iran_sans"
                                                 android:text="@{productDetailsViewModel.product.price}"
                                                 android:textColor="@color/green_light"
-                                                android:textSize="20.0sp"
-                                                android:fontFamily="@font/iran_sans"/>
+                                                android:textSize="20.0sp" />
 
 
                                         </LinearLayout>
@@ -443,7 +444,7 @@
                                     </LinearLayout>
 
                                     <RelativeLayout
-                                        android:id="@+id/activityProductDetails_addToCartBtn_layout"
+                                        android:id="@+id/fragment_product_detail_rl_addToBasket"
                                         android:layout_width="match_parent"
                                         android:layout_height="48.0dip"
                                         android:layout_below="@+id/activityProductDetails_rl_config_refresh"
@@ -522,17 +523,18 @@
 
                             <RelativeLayout
                                 android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
+                                android:layout_height="fill_parent"
+                                android:visibility="@{productDetailsViewModel.product.description.empty? View.GONE:View.VISIBLE}">
 
                                 <TextView
                                     android:id="@+id/fragment_product_details_tv_descProduct"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
-                                    android:ellipsize="end"
-                                    android:gravity="right"
+                                    android:ellipsize="start"
+                                    android:gravity="start"
                                     android:lineSpacingExtra="1.5dip"
-                                    android:maxLines="8"
+                                    android:maxLines="2"
                                     android:padding="16.0dip"
                                     android:text="@{Html.fromHtml(productDetailsViewModel.product.description)}"
                                     android:textColor="@color/black_dark"

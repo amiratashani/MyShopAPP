@@ -4,6 +4,7 @@ package com.example.myshop.view.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import com.example.myshop.databinding.NavigationDrawerBinding;
 
 import com.example.myshop.viewmodel.MainFragmentViewModel;
 
+import com.example.myshop.viewmodel.ProductBasketViewModel;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 
 
@@ -35,6 +38,7 @@ public class MainFragment extends Fragment {
 
     private NavigationDrawerBinding mBinding;
     private MainFragmentViewModel mMainFragmentViewModel;
+    private ProductBasketViewModel mProductBasketViewModel;
 
     private ImageSliderAdapter mImageSliderAdapter;
     private ProductListMainAdapter mLatestProductListMainAdapter;
@@ -56,21 +60,29 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mMainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
+        mProductBasketViewModel=ViewModelProviders.of(this).get(ProductBasketViewModel.class);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.navigation_drawer, container, false);
-        mMainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
+        mBinding.includeFragmentMain.includeToolbarFragmentMain.setProductBasketViewModel(mProductBasketViewModel);
+
+
+        setLatestProductsAdapter();
+        setPopularProductsAdapter();
+        setMostRateProductsAdapter();
 
         initUi();
         setToolbarButtonListener();
         setSliderView();
-        setLatestProductsAdapter();
-        setPopularProductsAdapter();
-        setMostRateProductsAdapter();
+
         setAllRecyclerView();
         setupDrawerContent();
-
 
         return mBinding.getRoot();
     }
@@ -85,6 +97,19 @@ public class MainFragment extends Fragment {
     private void setToolbarButtonListener() {
         mBinding.includeFragmentMain.includeToolbarFragmentMain.toolbarFragmentMainIbToggleButton
                 .setOnClickListener(v -> mBinding.drawerLayout.openDrawer(GravityCompat.END));
+        mBinding.includeFragmentMain.includeToolbarFragmentMain.toolbarFragmentMainIbSearchIcButton
+                .setOnClickListener(v -> {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, SearchFragment.newInstance())
+                            .addToBackStack(null)
+                            .commit();
+                });
+        mBinding.includeFragmentMain.includeToolbarFragmentMain.toolbarFragmentMainIvBasketButton.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container,ProductBasketFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+        });
     }
 
     private void setAllRecyclerView() {
@@ -133,7 +158,7 @@ public class MainFragment extends Fragment {
     }
 
     private void setLatestProductsAdapter() {
-        mLatestProductListMainAdapter = new ProductListMainAdapter( getActivity());
+        mLatestProductListMainAdapter = new ProductListMainAdapter(getActivity());
         mMainFragmentViewModel.getLatestProducts().observe(this, products -> {
             mLatestProductListMainAdapter.setProducts(products);
         });
@@ -148,18 +173,18 @@ public class MainFragment extends Fragment {
     }
 
     private void setMostRateProductsAdapter() {
-        mMostRateProductListMainAdapter = new ProductListMainAdapter( getActivity());
+        mMostRateProductListMainAdapter = new ProductListMainAdapter(getActivity());
         mMainFragmentViewModel.getMostRateProducts().observe(this, products -> {
             mMostRateProductListMainAdapter.setProducts(products);
         });
     }
 
-    public void setupDrawerContent() {
+    private void setupDrawerContent() {
         mBinding.navigation.setNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_listProduct:
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, ProductParentCategoriesFragment.newInstance(),"productCategoriesFragment")
+                            .replace(R.id.fragment_container, ProductParentCategoriesFragment.newInstance(), "productCategoriesFragment")
                             .addToBackStack("productCategoriesFragment")
                             .commit();
                     break;

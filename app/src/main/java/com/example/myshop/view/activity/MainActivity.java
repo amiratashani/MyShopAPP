@@ -3,6 +3,11 @@ package com.example.myshop.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
@@ -31,26 +36,15 @@ public class MainActivity extends SingleFragmentActivity {
 
     }
 
+
+
+
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-//            int index = getSupportFragmentManager().getBackStackEntryCount()-1;
-//            String tag = getSupportFragmentManager().getBackStackEntryAt(index).getName();
-//            if (tag.equals("productCategoriesFragment")) {
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, ProductParentCategoriesFragment.newInstance(), "productCategoriesFragment")
-//                        .addToBackStack("productCategoriesFragment")
-//                        .commit();
             getSupportFragmentManager().popBackStack();
-
         } else {
             finish();
         }
-
-
-    }
-
-    private void tellFragments() {
-
     }
 }

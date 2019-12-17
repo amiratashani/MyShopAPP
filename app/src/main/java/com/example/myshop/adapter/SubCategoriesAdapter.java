@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +30,7 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public SubCategoriesAdapter(Context context) {
+    public SubCategoriesAdapter(Context context, Fragment fragment) {
         mContext = context;
     }
 

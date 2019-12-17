@@ -17,4 +17,16 @@
     <string name="product_list_no_product_message">محصول مورد نظر شما یافت نشد!</string>
     <string name="special_offer">پیشنهاد ویژه</string>
     <string name="product_list_tools_product_current_price">۱۲۵ هزار تومان</string>
+    <string name="hint_searchbox">جستجو در دیجی‌کالا...</string>
+    <string name="basket_null_message">سبد خرید شما خالی است!</string>
+    <string name="follow_order">پیگیری سفارشات</string>
+    <string name="total_sale_price">جمع کل خرید</string>
+    <string name="complete_your_buying">خرید خود را نهایی کنید</string>
+    <string name="color">رنگ :</string>
+    <string name="warranty">گارانتی :</string>
+    <string name="seller">فروشنده :</string>
+    <string name="c_count">تعداد :</string>
+    <string name="total_price">قیمت کل</string>
+    <string name="cart_total_sale_amount">قیمت نهایی</string>
+    <string name="delete">حذف</string>
 </resources>

@@ -8,6 +8,7 @@
     <color name="bluegrey_dark">#ff61747e</color>
     <color name="main_pages_see_more">#ff2196f3</color>
     <color name="white_grey200">#ffeeeeee</color>
+    <color name="gray_100">#fff5f5f5</color>
     <color name="gray_200">#ffeeeeee</color>
     <color name="gray_300">#ffe0e0e0</color>
     <color name="gray_400">#ffbdbdbd</color>
@@ -36,4 +37,6 @@
     <color name="adrs_title3">#ff979797</color>
     <color name="sponsor_ad_text_color">#ff8b572a</color>
     <color name="sponsor_ad_back_color">#fffff6ce</color>
+    <color name="bluegrey_light">#ff78909c</color>
+    <color name="yellow_problem">#4dfff8ad</color>
 </resources>

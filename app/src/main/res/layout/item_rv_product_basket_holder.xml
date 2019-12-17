@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <variable
+
+            name="productDetailsViewModel"
+            type="com.example.myshop.viewmodel.ProductDetailsViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@id/row_grid_plist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4.0dip"
+        android:tag="row_grid_plist"
+        app:cardBackgroundColor="@color/white_pure"
+        app:cardCornerRadius="2.0dip"
+        app:cardElevation="3.0dip"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/cart_item_problems_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/yellow_problem"
+                android:paddingLeft="16.0dip"
+                android:paddingTop="8.0dip"
+                android:paddingRight="16.0dip"
+                android:paddingBottom="8.0dip"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/cart_item_problems_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cart_item_problems_layout">
+
+                <RelativeLayout
+                    android:id="@+id/cart_item_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.0dip"
+                    android:padding="0.0dip">
+
+
+
+                    <ImageView
+                        android:id="@+id/holder_iv_productImage"
+                        android:layout_width="80.0dip"
+                        android:layout_height="80.0dip"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="8.0dip"
+                        android:layout_marginTop="16.0dip"
+                        android:layout_marginRight="16.0dip"
+                        android:layout_marginBottom="16.0dip"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/alt" />
+
+
+                    <TextView
+                        android:id="@+id/holder_tv_productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginTop="16.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/holder_iv_productImage"
+                        android:fontFamily="@font/iran_sans"
+                        android:gravity="right"
+                        android:text="@{productDetailsViewModel.product.name}"
+                        android:textColor="@color/adrs_title1"
+                        android:textSize="16.0sp" />
+
+
+                    <TextView
+                        android:id="@+id/c_color_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/holder_tv_productName"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/holder_iv_productImage"
+                        android:fontFamily="@font/iran_sans"
+                        android:text="@string/color"
+                        android:textColor="@color/adrs_title2"
+                        android:textSize="14.0sp" />
+
+                    <TextView
+                        android:id="@+id/c_color_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/holder_tv_productName"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/c_color_title"
+                        android:fontFamily="@font/iran_sans"
+                        android:textColor="@color/adrs_title3"
+                        android:textSize="14.0sp" />
+
+                    <LinearLayout
+                        android:id="@+id/c_color_ly"
+                        android:layout_width="16.0dip"
+                        android:layout_height="16.0dip"
+                        android:layout_below="@id/holder_tv_productName"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginTop="14.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/c_color_lbl"
+                        android:orientation="vertical" />
+
+                    <RelativeLayout
+                        android:id="@+id/warranty_ly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/c_color_title"
+                        android:layout_marginTop="8.0dip"
+                        android:layout_toLeftOf="@id/holder_iv_productImage">
+
+                        <TextView
+                            android:id="@+id/c_Warranty_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="9.0dip"
+                            android:layout_marginRight="8.0dip"
+                            android:fontFamily="@font/iran_sans"
+                            android:text="@string/warranty"
+                            android:textColor="@color/adrs_title2"
+                            android:textSize="14.0sp" />
+
+                        <TextView
+                            android:id="@+id/c_warranty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:layout_marginTop="9.0dip"
+                            android:layout_marginRight="8.0dip"
+                            android:layout_toLeftOf="@id/c_Warranty_title"
+                            android:fontFamily="@font/iran_sans"
+                            android:text="دیجیکالا"
+                            android:textColor="@color/adrs_title3"
+                            android:textSize="14.0sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/title_seller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/warranty_ly"
+                        android:layout_marginTop="9.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/holder_iv_productImage"
+                        android:fontFamily="@font/iran_sans"
+                        android:text="@string/seller"
+                        android:textColor="@color/adrs_title2"
+                        android:textSize="14.0sp" />
+
+                    <TextView
+                        android:id="@+id/value_seller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/warranty_ly"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginTop="9.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/title_seller"
+                        android:fontFamily="@font/iran_sans"
+                        android:text="دیجیکالا"
+                        android:textColor="@color/adrs_title3"
+                        android:textSize="14.0sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/c_count_ly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_seller"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_marginTop="9.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_toLeftOf="@id/holder_iv_productImage">
+
+                        <TextView
+                            android:id="@+id/c_count_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/iran_sans"
+                            android:text="@string/c_count"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/adrs_title2"
+                            android:textSize="14.0sp" />
+
+                        <Spinner
+                            android:layoutDirection="rtl"
+                            android:id="@+id/c_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60.0dip"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="8.0dip"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toLeftOf="@id/c_count_title"
+                            android:paddingRight="5.0dip"
+                            android:scrollbars="none"
+                            android:textColor="@color/adrs_title3"
+                            android:textSize="14.0sp" />
+                    </RelativeLayout>
+
+
+
+
+                    <View
+                        android:id="@+id/below_warranty_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_below="@id/c_count_ly"
+                        android:layout_marginTop="12.0dip"
+                        android:background="@color/white_grey200" />
+
+                    <RelativeLayout
+                        android:id="@+id/c_sale_total_price_ly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/below_warranty_line"
+                        android:background="@color/white_grey50"
+                        android:orientation="horizontal"
+                        android:paddingLeft="24.0dip"
+                        android:paddingTop="10.0dip"
+                        android:paddingRight="16.0dip"
+                        android:paddingBottom="10.0dip"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/iran_sans"
+                                android:text="تومان"
+                                android:textColor="@color/adrs_title3"
+                                android:textSize="14.0sp" />
+                            <TextView
+                                android:id="@+id/holder_tv_productPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/iran_sans"
+                                android:text="@{productDetailsViewModel.product.price}"
+                                android:layout_marginStart="8dp"
+                                android:textColor="@color/adrs_title3"
+                                android:textSize="14.0sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/c_sale_total_price_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center"
+                            android:fontFamily="@font/iran_sans"
+                            android:gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/total_price"
+                            android:textColor="@color/adrs_title3"
+                            android:textSize="14.0sp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/c_discounts_ly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/c_sale_total_price_ly"
+                        android:layout_marginTop="0.0dip"
+                        android:background="@color/white_grey50"
+                        android:orientation="horizontal"
+                        android:paddingLeft="24.0dip"
+                        android:paddingRight="16.0dip"
+                        android:paddingBottom="14.0dip"
+                        android:weightSum="2.0">
+
+                        <LinearLayout
+                            android:id="@+id/c_discounts"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1.0"
+                            android:gravity="left"
+                            android:orientation="vertical" />
+
+                        <LinearLayout
+                            android:id="@+id/c_discounts_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1.0"
+                            android:gravity="right"
+                            android:orientation="vertical" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/below_discount_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_below="@id/c_discounts_ly"
+                        android:background="@color/white_grey200" />
+
+                    <RelativeLayout
+                        android:id="@+id/c_total_sale_amount_ly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/below_discount_line"
+                        android:layout_marginTop="0.0dip"
+                        android:background="@color/white_grey50"
+                        android:orientation="horizontal"
+                        android:paddingLeft="24.0dip"
+                        android:paddingTop="12.0dip"
+                        android:paddingRight="16.0dip"
+                        android:paddingBottom="12.0dip"
+                        android:weightSum="2.0">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|center"
+                            android:fontFamily="@font/iran_sans"
+                            android:gravity="start"
+                            android:text="تومان"
+                            android:textColor="@color/green_light"
+                            android:textSize="15.0sp" />
+                        <TextView
+                            android:id="@+id/holder_tv_finalProductPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|center"
+                            android:text=""
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/iran_sans"
+                            android:gravity="start"
+                            android:textColor="@color/green_light"
+                            android:textSize="15.0sp" />
+                    </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/c_total_sale_amount_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/iran_sans"
+                            android:gravity="end"
+                            android:text="@string/cart_total_sale_amount"
+                            android:textColor="@color/green_light"
+                            android:textSize="15.0sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/below_total_sale_amount_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_below="@id/c_total_sale_amount_ly"
+                        android:background="@color/white_grey200" />
+
+                    <LinearLayout
+                        android:id="@+id/c_delete_ly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48.0dip"
+                        android:layout_below="@id/below_total_sale_amount_line"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="24.0dip"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/c_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36.0dip"
+                            android:fontFamily="@font/iran_sans"
+                            android:gravity="center"
+                            android:paddingLeft="8.0dip"
+                            android:paddingRight="8.0dip"
+                            android:text="@string/delete"
+                            android:textColor="@color/red_light"
+                            android:textSize="17.0sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/cart_item_not_exist_foreground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="#b3ffffff"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

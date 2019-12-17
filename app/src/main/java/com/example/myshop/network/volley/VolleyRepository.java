@@ -93,6 +93,15 @@ public class VolleyRepository {
         return url.toString();
     }
 
+    public String getProductsSearchUrl(String search) {
+        Uri url = baseUrl
+                .buildUpon()
+                .appendPath("products")
+                .appendQueryParameter("search", search)
+                .build();
+        return url.toString();
+    }
+
     public String getCategories(String perPage){
         Uri url = baseUrl
                 .buildUpon()
@@ -108,6 +117,14 @@ public class VolleyRepository {
                 .buildUpon()
                 .appendPath("products")
                 .appendQueryParameter("category",categoryId)
+                .build();
+        return url.toString();
+    }
+
+    public String getProductsBasket(){
+        Uri url = baseUrl
+                .buildUpon()
+                .appendPath("products")
                 .build();
         return url.toString();
     }

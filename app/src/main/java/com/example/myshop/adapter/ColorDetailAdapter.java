@@ -60,8 +60,6 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
         private TextView mTVColorTitle;
         private RelativeLayout mRelativeLayout;
 
-        // Drawable unwrappedDrawable = AppCompatResources.getDrawable(mContext, R.drawable.circle_color);
-        //Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
 
         private Drawable mDrawable;
         private GradientDrawable mShapeDrawable;
@@ -75,7 +73,6 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
             mShapeDrawable = (GradientDrawable) mDrawable;
 
             mRelativeLayout.setOnClickListener(v -> {
-
                 if (mRelativeLayout.isSelected())
                     mRelativeLayout.setSelected(false);
                 else
@@ -93,29 +90,23 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
 
         private void setColor() {
             switch (mColor) {
-                case "سفید":
+                case "White":
                     mShapeDrawable.setColor(Color.WHITE);
-                    // DrawableCompat.setTint(wrappedDrawable, Color.WHITE);
                     break;
-                case "سیاه":
+                case "Black":
                     mShapeDrawable.setColor(Color.BLACK);
-                    // DrawableCompat.setTint(wrappedDrawable, Color.BLACK);
                     break;
-                case "قرمز":
+                case "Red":
                     mShapeDrawable.setColor(Color.RED);
-                    //DrawableCompat.setTint(wrappedDrawable, Color.RED);
                     break;
-                case "زرد":
+                case "Yellow":
                     mShapeDrawable.setColor(Color.YELLOW);
-                    // DrawableCompat.setTint(wrappedDrawable, Color.YELLOW);
                     break;
-                case "آبی":
+                case "Blue":
                     mShapeDrawable.setColor(Color.BLUE);
-                    //DrawableCompat.setTint(wrappedDrawable, Color.BLUE);
                     break;
-                case "خاکستری":
+                case "Gray":
                     mShapeDrawable.setColor(Color.GRAY);
-                    //DrawableCompat.setTint(wrappedDrawable, Color.BLUE);
                     break;
             }
 

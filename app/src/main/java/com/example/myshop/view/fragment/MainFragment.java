@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +27,7 @@ import com.example.myshop.databinding.NavigationDrawerBinding;
 import com.example.myshop.viewmodel.MainFragmentViewModel;
 
 import com.example.myshop.viewmodel.ProductBasketViewModel;
+import com.example.myshop.viewmodel.ProductFilterViewModel;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 
 
@@ -39,6 +40,7 @@ public class MainFragment extends Fragment {
     private NavigationDrawerBinding mBinding;
     private MainFragmentViewModel mMainFragmentViewModel;
     private ProductBasketViewModel mProductBasketViewModel;
+    private ProductFilterViewModel mProductFilterViewModel;
 
     private ImageSliderAdapter mImageSliderAdapter;
     private ProductListMainAdapter mLatestProductListMainAdapter;
@@ -65,6 +67,10 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mMainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
         mProductBasketViewModel=ViewModelProviders.of(this).get(ProductBasketViewModel.class);
+        mProductFilterViewModel=ViewModelProviders.of(this).get(ProductFilterViewModel.class);
+        mProductFilterViewModel.setSizeFilter();
+        mProductFilterViewModel.setColorFilter();
+
     }
 
     @Override

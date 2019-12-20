@@ -13,6 +13,7 @@ import com.example.myshop.R;
 import com.example.myshop.viewmodel.ProductBasketViewModel;
 import com.example.myshop.viewmodel.ProductCategoriesViewModel;
 import com.example.myshop.viewmodel.MainFragmentViewModel;
+import com.example.myshop.viewmodel.ProductFilterViewModel;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class SplashActivity extends AppCompatActivity {
     private MainFragmentViewModel mMainFragmentViewModel;
     private ProductCategoriesViewModel mProductCategoriesViewModel;
     private ProductBasketViewModel mProductBasketViewModel;
+    private ProductFilterViewModel mProductFilterViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +30,16 @@ public class SplashActivity extends AppCompatActivity {
         mMainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
         mProductCategoriesViewModel = ViewModelProviders.of(this).get(ProductCategoriesViewModel.class);
         mProductBasketViewModel=ViewModelProviders.of(this).get(ProductBasketViewModel.class);
+        mProductFilterViewModel=ViewModelProviders.of(this).get(ProductFilterViewModel.class);
 
         FetcherTask fetcherTask = new FetcherTask();
         fetcherTask.execute();
 
         mProductBasketViewModel.startProductBasketService();
         mProductBasketViewModel.setProductsBasketCount();
+
+
+        mProductFilterViewModel.setAttributes();
 
     }
 

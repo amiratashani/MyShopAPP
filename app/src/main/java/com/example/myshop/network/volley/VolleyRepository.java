@@ -128,4 +128,14 @@ public class VolleyRepository {
                 .build();
         return url.toString();
     }
+    public String getAttributeTermUrl(String id){
+        Uri url = baseUrl
+                .buildUpon()
+                .appendPath("products")
+                .appendPath("attributes")
+                .appendPath(id)
+                .appendPath("terms")
+                .build();
+        return url.toString();
+    }
 }

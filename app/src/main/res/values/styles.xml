@@ -31,5 +31,10 @@
         <item name="android:paddingRight">@dimen/product_list_row_product_special_offer_badge_padding</item>
         <item name="android:text">@string/special_offer</item>
     </style>
+    <style name="Color1SwitchStyle">
+        <item name="android:colorForeground">@color/gray_600</item>
+        <item name="colorControlActivated">@color/green_light</item>
+        <item name="colorSwitchThumbNormal">@color/gray_600</item>
+    </style>
 
 </resources>

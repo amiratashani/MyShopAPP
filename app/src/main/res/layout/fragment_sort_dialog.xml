@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".view.fragment.filter.SortDialogFragment">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/popularity"
+            android:padding="16dp">
+
+            <RadioButton
+                android:id="@+id/popularity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_light"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingRight="8dp"
+                android:text="محبوب ترین"
+                android:textSize="11dp" />
+
+            <RadioButton
+                android:id="@+id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_light"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingRight="8dp"
+                android:text="بیشترین امتیاز"
+                android:textSize="11dp" />
+
+            <RadioButton
+                android:id="@+id/price_descending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_light"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingRight="8dp"
+                android:text="قیمت از زیاد به کم"
+                android:textSize="11dp" />
+
+            <RadioButton
+                android:id="@+id/price_ascending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_light"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingRight="8dp"
+                android:text="قیمت از کم به زیاد"
+                android:textSize="11dp" />
+
+            <RadioButton
+                android:id="@+id/newest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_light"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingRight="8dp"
+                android:text= "جدیدترین"
+                android:textSize="11dp" />
+
+        </RadioGroup>
+
+    </FrameLayout>
+</layout>

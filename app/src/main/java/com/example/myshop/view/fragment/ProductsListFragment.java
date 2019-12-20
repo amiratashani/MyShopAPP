@@ -1,6 +1,8 @@
 package com.example.myshop.view.fragment;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,13 +20,16 @@ import com.example.myshop.utility.ProductGridItemDecoration;
 import com.example.myshop.R;
 import com.example.myshop.adapter.ProductListAdapter;
 import com.example.myshop.databinding.FragmentProductsListBinding;
+import com.example.myshop.view.fragment.filter.ProductFiltersFragment;
+import com.example.myshop.view.fragment.filter.SortDialogFragment;
 import com.example.myshop.viewmodel.ProductsListViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductsListFragment extends Fragment {
-
+    public static final String SORT_DIALOG_FRAGMENT = "sort_dialog_fragment";
+    private static final int REQUEST_CODE_FOR_SORT_DIALOG = 1;
     private FragmentProductsListBinding mBinding;
     private ProductsListViewModel mProductsListViewModel;
     private ProductListAdapter mProductListAdapter;
@@ -47,12 +52,28 @@ public class ProductsListFragment extends Fragment {
         mProductsListViewModel.setProductListFromApi();
         setRVProductsListLayout();
         setProductListAdapter();
+
+
+        mBinding.filterSelectorFrame.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, ProductFiltersFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        mBinding.sortTypeSelectorFrame.setOnClickListener(v -> {
+            SortDialogFragment sortDialogFragment = SortDialogFragment.newInstance();
+            sortDialogFragment.setTargetFragment(ProductsListFragment.this, REQUEST_CODE_FOR_SORT_DIALOG);
+            sortDialogFragment.show(getActivity().getSupportFragmentManager(), SORT_DIALOG_FRAGMENT);
+        });
         return mBinding.getRoot();
     }
 
-    private void setProductListAdapter() {
-        mProductListAdapter = new ProductListAdapter(getActivity());
 
+    private void setProductListAdapter() {
+
+
+        mProductListAdapter = new ProductListAdapter(getActivity());
         mProductsListViewModel.getProductList().observe(this, products -> {
             mProductListAdapter.setProducts(products);
             mBinding.fragmentProductListPb.setVisibility(View.GONE);
@@ -73,5 +94,23 @@ public class ProductsListFragment extends Fragment {
         mBinding.fragmentProductsListRv.addItemDecoration(new ProductGridItemDecoration(largePadding, smallPadding));
 
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQUEST_CODE_FOR_SORT_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    mProductsListViewModel.setProductListFromApi();
+                    setProductListAdapter();
+                }
+            default:
+                break;
+        }
+
+    }
+
 
 }

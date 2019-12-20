@@ -24,6 +24,7 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
 
     private List<String> mColors;
     private Context mContext;
+    private int selectedItemPosition = -1;
 
     public ColorDetailAdapter(List<String> colors, Context context) {
         mColors = colors;
@@ -73,15 +74,18 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
             mShapeDrawable = (GradientDrawable) mDrawable;
 
             mRelativeLayout.setOnClickListener(v -> {
-                if (mRelativeLayout.isSelected())
-                    mRelativeLayout.setSelected(false);
-                else
-                    mRelativeLayout.setSelected(true);
-
+                selectedItemPosition = getAdapterPosition();
+                notifyDataSetChanged();
             });
         }
 
         private void bind(String color) {
+
+            if (selectedItemPosition == getAdapterPosition()) {
+                mRelativeLayout.setSelected(true);
+            } else {
+                mRelativeLayout.setSelected(false);
+            }
             mColor = color;
             mTVColorTitle.setText(color);
             setColor();

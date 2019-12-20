@@ -24,6 +24,7 @@ import com.example.myshop.databinding.FragmentProductDetailsBinding;
 import com.example.myshop.model.product.Product;
 import com.example.myshop.model.product.ProductAttributes;
 import com.example.myshop.model.product.ProductImage;
+import com.example.myshop.viewmodel.ProductBasketViewModel;
 import com.example.myshop.viewmodel.ProductDetailsViewModel;
 
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -74,6 +75,7 @@ public class ProductDetailsFragment extends Fragment {
         mBinding.fragmentProductDetailsToolbar.setProductDetailsViewModel(mProductDetailsViewModel);
 
 
+
         initUi();
         mProductDetailsViewModel.getProduct().observe(this, product -> {
             setAdapterSliderImage(product);
@@ -108,6 +110,7 @@ public class ProductDetailsFragment extends Fragment {
         mBinding.fragmentProductDetailRlAddToBasket.setOnClickListener(v -> {
             mProductDetailsViewModel.addProductToBasketLiveData();
             mBinding.fragmentProductDetailsToolbar.setProductDetailsViewModel(mProductDetailsViewModel);
+
             mBinding.executePendingBindings();
         });
 

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import androidx.lifecycle.MutableLiveData;
 
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.RequestFuture;
@@ -22,6 +23,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class ProductRepository {
@@ -142,7 +144,12 @@ public class ProductRepository {
             String str = productsId.toString();
             String Url = VolleyRepository.getInstance(mContext).getProductsBasket() + "&include=" + str;
             RequestFuture<JSONArray> future = RequestFuture.newFuture();
-            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null, future, future);
+            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, Url, null, future, future){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    return super.getParams();
+                }
+            };
             VolleyRepository.getInstance(mContext).addToRequestQueue(request);
             try {
                 List<Product> products = new Gson().fromJson(future.get().toString(), new TypeToken<ArrayList<Product>>() {

@@ -87,7 +87,12 @@ public class ProductsListFragment extends Fragment {
     private void setRVProductsListLayout() {
 
         mBinding.fragmentProductsListRv.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(
+                getContext(),
+                1,
+                GridLayoutManager.VERTICAL,
+                false
+        );
         mBinding.fragmentProductsListRv.setLayoutManager(gridLayoutManager);
         int largePadding = getResources().getDimensionPixelSize(R.dimen.product_grid_spacing);
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.product_grid_spacing_small);

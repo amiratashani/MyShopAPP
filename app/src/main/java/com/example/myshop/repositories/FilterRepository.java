@@ -2,9 +2,7 @@ package com.example.myshop.repositories;
 
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.volley.Request;
@@ -28,6 +26,7 @@ public class FilterRepository {
     private MutableLiveData<List<Attribute>> mAttributes;
     private MutableLiveData<HashMap<Integer, Boolean>> mColorFilter;
     private MutableLiveData<HashMap<Integer, Boolean>> mSizeFilter;
+    private MutableLiveData<String> mUrlRequestFilter;
 
     public static FilterRepository getInstance(Context context) {
         if (sInstance == null) {
@@ -39,6 +38,7 @@ public class FilterRepository {
     public MutableLiveData<List<Attribute>> getAttributes() {
         return mAttributes;
     }
+
     public MutableLiveData<HashMap<Integer, Boolean>> getColorFilter() {
         return mColorFilter;
     }
@@ -47,11 +47,16 @@ public class FilterRepository {
         return mSizeFilter;
     }
 
+    public MutableLiveData<String> getUrlRequestFilter() {
+        return mUrlRequestFilter;
+    }
+
     private FilterRepository(Context context) {
         mContext = context;
         mAttributes = new MutableLiveData<>();
         mColorFilter = new MutableLiveData<>();
         mSizeFilter = new MutableLiveData<>();
+        mUrlRequestFilter =new MutableLiveData<>();
     }
 
     public void setAttributesFromApi() {
@@ -62,7 +67,7 @@ public class FilterRepository {
     }
 
     public void setAttributesTermsFromApi() {
-        List<Attribute> attributes =new ArrayList<>();
+        List<Attribute> attributes = new ArrayList<>();
 
         for (Attribute attribute : mAttributes.getValue()) {
             String url = VolleyRepository.getInstance(mContext).getAttributeTermUrl(String.valueOf(attribute.getId()));
@@ -103,7 +108,8 @@ public class FilterRepository {
         }
         mSizeFilter.setValue(hashMap);
     }
-    public void emptySizeFilter(){
+
+    public void emptySizeFilter() {
         HashMap<Integer, Boolean> hashMap = mSizeFilter.getValue();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             mAttributes.getValue().stream()
@@ -116,7 +122,7 @@ public class FilterRepository {
     }
 
 
-    public void emptyColorFilter(){
+    public void emptyColorFilter() {
         HashMap<Integer, Boolean> hashMap = mColorFilter.getValue();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             mAttributes.getValue().stream()
@@ -126,5 +132,9 @@ public class FilterRepository {
                     .forEach(attributeTerm -> hashMap.put(attributeTerm.getId(), false));
         }
         mColorFilter.setValue(hashMap);
+    }
+
+    public void setUrlRequestFilter(String urlRequestFilter) {
+        mUrlRequestFilter.setValue(urlRequestFilter);
     }
 }

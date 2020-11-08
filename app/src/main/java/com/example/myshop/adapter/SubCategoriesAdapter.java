@@ -30,7 +30,7 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public SubCategoriesAdapter(Context context, Fragment fragment) {
+    public SubCategoriesAdapter(Context context) {
         mContext = context;
     }
 

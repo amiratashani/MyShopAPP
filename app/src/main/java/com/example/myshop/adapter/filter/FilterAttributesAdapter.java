@@ -29,9 +29,11 @@ public class FilterAttributesAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private int mType;
     private List<AttributeTerm> mAttributeTerms;
+    private ProductFilterViewModel mProductFilterViewModel;
 
-    public FilterAttributesAdapter(Context context) {
+    public FilterAttributesAdapter(Context context,ProductFilterViewModel productFilterViewModel) {
         mContext = context;
+        mProductFilterViewModel=productFilterViewModel;
     }
 
     public void setAttributeTerms(List<AttributeTerm> attributeTerms) {
@@ -91,13 +93,13 @@ public class FilterAttributesAdapter extends RecyclerView.Adapter {
 
     private class SimpleFilterAttributeViewHolder extends RecyclerView.ViewHolder {
         private ItemRvFilterAttributeSimpleHolderBinding mBinding;
-        private ProductFilterViewModel mProductFilterViewModel;
+
         private AttributeTerm mAttributeTerm;
 
         private SimpleFilterAttributeViewHolder(@NonNull ItemRvFilterAttributeSimpleHolderBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
-            mProductFilterViewModel = ViewModelProviders.of((MainActivity) mContext).get(ProductFilterViewModel.class);
+
             mBinding.attributeCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
                 mProductFilterViewModel.setIsCheck(mAttributeTerm.getId(), isChecked);
@@ -117,12 +119,12 @@ public class FilterAttributesAdapter extends RecyclerView.Adapter {
 
     public class PriceRangeViewHolder extends RecyclerView.ViewHolder {
         private ItemRvFilterAttributePriceHolderBinding mBinding;
-        private ProductFilterViewModel mProductFilterViewModel;
+
 
         public PriceRangeViewHolder(@NonNull ItemRvFilterAttributePriceHolderBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
-            mProductFilterViewModel = ViewModelProviders.of((MainActivity) mContext).get(ProductFilterViewModel.class);
+
         }
 
         private void bind() {

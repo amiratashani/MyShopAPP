@@ -59,7 +59,7 @@ public class MainFragment extends Fragment {
     }
 
     public MainFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MainFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.navigation_drawer, container, false);
         mBinding.includeFragmentMain.includeToolbarFragmentMain.setProductBasketViewModel(mProductBasketViewModel);
 
-
+        
         setLatestProductsAdapter();
         setPopularProductsAdapter();
         setMostRateProductsAdapter();
@@ -93,6 +93,11 @@ public class MainFragment extends Fragment {
         return mBinding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
 
     private void initUi() {
         mRVLatestProducts = mBinding.includeFragmentMain.fragmentMainRvLatestProducts;

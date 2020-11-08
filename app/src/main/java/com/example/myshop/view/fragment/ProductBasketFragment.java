@@ -46,19 +46,17 @@ public class ProductBasketFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProductBasketViewModel = ViewModelProviders.of(getActivity()).get(ProductBasketViewModel.class);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_basket, container, false);
 
-        mProductBasketViewModel.getTotalPrice().observe(this,total->{
+        mProductBasketViewModel.getTotalPrice().observe(this, total -> {
             mBinding.totalSalePrice.setText(String.valueOf(total));
         });
         setupAdapter();
         setupRecyclerView();
-
 
 
         return mBinding.getRoot();

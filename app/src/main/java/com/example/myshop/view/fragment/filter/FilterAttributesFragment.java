@@ -46,8 +46,8 @@ public class FilterAttributesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_filter_attributes, container, false);
-        mProductFilterViewModel = ViewModelProviders.of(getActivity()).get(ProductFilterViewModel.class);
-        mFilterAttributesAdapter = new FilterAttributesAdapter(getActivity());
+        mProductFilterViewModel = ViewModelProviders.of(getParentFragment()).get(ProductFilterViewModel.class);
+        mFilterAttributesAdapter = new FilterAttributesAdapter(getActivity(),mProductFilterViewModel);
 
         mProductFilterViewModel.getTypeAdapter().observe(this, integer -> {
             mFilterAttributesAdapter.setType(integer);

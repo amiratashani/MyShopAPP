@@ -66,12 +66,9 @@ public class ProductParentCategoriesFragment extends Fragment {
     }
 
 
-
-
     private void setPagerAdapter() {
         mCategoriesPagerAdapter = new CategoriesPagerAdapter(this,
                 mProductCategoriesViewModel.getParentCategories().getValue());
-
         mBinding.fragmentProducCategoriestVp.setAdapter(mCategoriesPagerAdapter);
     }
 
@@ -79,7 +76,7 @@ public class ProductParentCategoriesFragment extends Fragment {
     public class CategoriesPagerAdapter extends FragmentStateAdapter {
         private List<Category> mCategoryList;
 
-        public CategoriesPagerAdapter(@NonNull Fragment fragment,List<Category> categoryList) {
+        CategoriesPagerAdapter(@NonNull Fragment fragment, List<Category> categoryList) {
             super(fragment);
             mCategoryList=categoryList;
         }

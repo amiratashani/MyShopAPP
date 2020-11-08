@@ -60,6 +60,7 @@ public class ProductBasketViewModel extends AndroidViewModel {
     }
 
     public void setProductsBasketCount() {
+
         if (MyShopPreferences.getProductsBasket(getApplication()) == null) {
             mRepository.setProductsBasketCount(0);
         } else {

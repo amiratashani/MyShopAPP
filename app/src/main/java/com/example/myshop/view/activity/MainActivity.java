@@ -18,26 +18,19 @@ import com.example.myshop.view.fragment.MainFragment;
 
 public class MainActivity extends SingleFragmentActivity {
 
-
     public static Intent newIntent(Context context) {
-
         return new Intent(context, MainActivity.class);
     }
 
     @Override
     public int getLayoutResId() {
-
         return R.layout.activity_main;
     }
 
     @Override
     public Fragment createFragment() {
         return MainFragment.newInstance();
-
     }
-
-
-
 
     @Override
     public void onBackPressed() {

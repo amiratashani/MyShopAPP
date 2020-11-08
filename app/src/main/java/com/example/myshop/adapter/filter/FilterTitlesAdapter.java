@@ -25,9 +25,11 @@ public class FilterTitlesAdapter extends RecyclerView.Adapter<FilterTitlesAdapte
     private List<Attribute> mAttributes;
     private Context mContext;
     private int selectedItemPosition = 0;
+    private ProductFilterViewModel mProductFilterViewModel;
 
-    public FilterTitlesAdapter(Context context) {
+    public FilterTitlesAdapter(Context context,ProductFilterViewModel productFilterViewModel) {
         mContext = context;
+        mProductFilterViewModel=productFilterViewModel;
     }
 
     public void setAttributes(List<Attribute> attributes) {
@@ -57,13 +59,10 @@ public class FilterTitlesAdapter extends RecyclerView.Adapter<FilterTitlesAdapte
 
     class FilterTitleViewHolder extends RecyclerView.ViewHolder {
         private ItemRvFilterTitleHolderBinding mBinding;
-        private ProductFilterViewModel mProductFilterViewModel;
         private Attribute mAttribute;
-
         FilterTitleViewHolder(@NonNull ItemRvFilterTitleHolderBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
-            mProductFilterViewModel = ViewModelProviders.of((MainActivity) mContext).get(ProductFilterViewModel.class);
             mBinding.getRoot().setOnClickListener(v -> {
                 selectedItemPosition = getAdapterPosition();
                 notifyDataSetChanged();

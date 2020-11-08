@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 public class ProductCategoriesViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Category>> mParentCategories;
+    private MutableLiveData<Integer> mCurent;
 
     public ProductCategoriesViewModel(@NonNull Application application) {
         super(application);

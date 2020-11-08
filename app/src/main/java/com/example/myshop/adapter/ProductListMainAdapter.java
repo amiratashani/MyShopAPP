@@ -40,7 +40,6 @@ public class ProductListMainAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         ItemRvProductListMainHolderBinding mBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext())
                 , R.layout.item_rv_product_list_main_holder, parent, false);
         return new ProductListMainHolder(mBinding);

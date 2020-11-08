@@ -32,10 +32,10 @@ public class ProductFilterViewModel extends AndroidViewModel {
     private MutableLiveData<String> mMinPrice;
     private MutableLiveData<String> mMaxPrice;
 
-    private MutableLiveData<String> mUrlRequest;
+    private MutableLiveData<String> mUrlRequestFilter;
     private MutableLiveData<String> mUrlFilter;
 
-    private MutableLiveData<Integer> mCheakRadioButton;
+    private MutableLiveData<Integer> mCheckRadioButton;
 
     public LiveData<List<Attribute>> getAttributes() {
         return mAttributes;
@@ -58,7 +58,7 @@ public class ProductFilterViewModel extends AndroidViewModel {
     }
 
     public LiveData<Integer> getCheckRadioButton() {
-        return mCheakRadioButton;
+        return mCheckRadioButton;
     }
 
     public ProductFilterViewModel(@NonNull Application application) {
@@ -77,10 +77,10 @@ public class ProductFilterViewModel extends AndroidViewModel {
         mMaxPrice = new MutableLiveData<>();
         mMaxPrice.setValue("");
 
-        mUrlRequest = new MutableLiveData<>(ProductRepository.getInstance(getApplication()).getUrlRequest().getValue());
+        mUrlRequestFilter = mRepository.getUrlRequestFilter();
         mUrlFilter = new MutableLiveData<>();
 
-        mCheakRadioButton = new MutableLiveData<>(R.id.popularity);
+        mCheckRadioButton = new MutableLiveData<>(R.id.newest);
     }
 
     public void setAttributes() {
@@ -154,6 +154,7 @@ public class ProductFilterViewModel extends AndroidViewModel {
         StringBuilder url = new StringBuilder();
         StringBuilder colorFilter = new StringBuilder();
         StringBuilder sizeFilter = new StringBuilder();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             mColorFilter.getValue().forEach((integer, aBoolean) -> {
                 if (aBoolean) {
@@ -167,7 +168,6 @@ public class ProductFilterViewModel extends AndroidViewModel {
             });
         }
 
-
         if (sizeFilter.length() != 0) {
             url.append("&attribute=pa_size").append("&attribute_term=").append(sizeFilter);
         }
@@ -180,7 +180,7 @@ public class ProductFilterViewModel extends AndroidViewModel {
 
         mUrlFilter.setValue(url.toString());
 
-        setUrlRequest(mUrlRequest.getValue() + mUrlFilter.getValue());
+        setUrlRequestFilter(mUrlRequestFilter.getValue() + mUrlFilter.getValue());
     }
 
     public void sortFilter(int sortId) {
@@ -203,13 +203,15 @@ public class ProductFilterViewModel extends AndroidViewModel {
                 url.append("&orderby=price").append("&order=desc");
                 break;
         }
-        mCheakRadioButton.setValue(sortId);
+        mCheckRadioButton.setValue(sortId);
         mUrlFilter.setValue(url.toString());
-        setUrlRequest(mUrlRequest.getValue() + mUrlFilter.getValue());
+        setUrlRequestFilter(mUrlRequestFilter.getValue() + mUrlFilter.getValue());
 
     }
 
-    public void setUrlRequest(String urlRequest) {
-        ProductRepository.getInstance(getApplication()).setUrlRequest(urlRequest);
+    public void setUrlRequestFilter(String urlRequestFilter) {
+        ProductRepository.getInstance(getApplication()).setUrlRequest(urlRequestFilter);
     }
+
+
 }

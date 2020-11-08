@@ -35,6 +35,7 @@ public class ProductFiltersFragment extends Fragment {
         return fragment;
     }
 
+
     public ProductFiltersFragment() {
         // Required empty public constructor
     }
@@ -44,7 +45,7 @@ public class ProductFiltersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_filters, container, false);
-        mProductFilterViewModel = ViewModelProviders.of(getActivity()).get(ProductFilterViewModel.class);
+        mProductFilterViewModel = ViewModelProviders.of(this).get(ProductFilterViewModel.class);
 
         mBinding.filterBtn.setOnClickListener(v -> {
             mProductFilterViewModel.urlFilter();

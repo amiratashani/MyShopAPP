@@ -94,23 +94,26 @@ public class ColorDetailAdapter extends RecyclerView.Adapter {
 
         private void setColor() {
             switch (mColor) {
-                case "White":
+                case "سفید":
                     mShapeDrawable.setColor(Color.WHITE);
                     break;
-                case "Black":
+                case "مشکی":
                     mShapeDrawable.setColor(Color.BLACK);
                     break;
-                case "Red":
-                    mShapeDrawable.setColor(Color.RED);
+                case "صورتی":
+                    mShapeDrawable.setColor(Color.parseColor("#ffc0cb"));
                     break;
                 case "Yellow":
                     mShapeDrawable.setColor(Color.YELLOW);
                     break;
-                case "Blue":
+                case "آبی":
                     mShapeDrawable.setColor(Color.BLUE);
                     break;
-                case "Gray":
-                    mShapeDrawable.setColor(Color.GRAY);
+                case "نارنجی":
+                    mShapeDrawable.setColor(Color.parseColor("#FFA500"));
+                    break;
+                case "مرجانی":
+                    mShapeDrawable.setColor(Color.parseColor("#ff7f50"));
                     break;
             }
 

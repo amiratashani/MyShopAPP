@@ -43,13 +43,13 @@ public class FilterTitlesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mProductFilterViewModel= ViewModelProviders.of(getActivity()).get(ProductFilterViewModel.class);
+        mProductFilterViewModel= ViewModelProviders.of(getParentFragment()).get(ProductFilterViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_filter_titles, container, false);
-        mFilterTitlesAdapter = new FilterTitlesAdapter(getActivity());
+        mFilterTitlesAdapter = new FilterTitlesAdapter(getActivity(),mProductFilterViewModel);
         mProductFilterViewModel.getAttributes().observe(this,attributes -> {
             mFilterTitlesAdapter.setAttributes(attributes);
             mProductFilterViewModel.setAttributeId(attributes.get(0).getId());

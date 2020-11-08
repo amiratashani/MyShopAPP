@@ -54,7 +54,6 @@ public class ProductSubCategoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_sub_categories, container, false);
 
-
         initUi();
         setSubCategoriesAdapter();
 
@@ -68,9 +67,12 @@ public class ProductSubCategoriesFragment extends Fragment {
     }
 
     private void setSubCategoriesAdapter() {
-        mSubCategoriesAdapter = new SubCategoriesAdapter(getActivity(), this);
-        mSubCategoriesAdapter.setListSubCategory(mProductCategoriesViewModel.getParentCategories().getValue().get(position).getSubCategory());
+        mSubCategoriesAdapter = new SubCategoriesAdapter(getActivity());
+        // mSubCategoriesAdapter.setListSubCategory(mProductCategoriesViewModel.getParentCategories().getValue().get(position).getSubCategory());
         mBinding.fragmentSubCategoriesRecyclerView.setAdapter(mSubCategoriesAdapter);
+        mProductCategoriesViewModel.getParentCategories().observe(this, categoryList -> {
+            mSubCategoriesAdapter.setListSubCategory(categoryList.get(position).getSubCategory());
+        });
     }
 
 }

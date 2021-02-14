@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black_light"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/dialog_filter_toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="56.0dip"
+            android:layout_alignParentTop="true"
+            android:background="@color/red_light"
+            android:gravity="right|center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="center_vertical"
+                android:text="@string/product_filtering"
+                android:textColor="@color/back_withe"
+                android:textSize="17.0sp" />
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_margin="4.0dip"
+                android:background="@drawable/hover_oval"
+                android:contentDescription="@string/abc_action_bar_home_description"
+                android:padding="12.0dip"
+                android:src="@drawable/ic_close_white_24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/filter_btn"
+            android:layout_below="@id/dialog_filter_toolbar"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="3.0">
+
+            <fragment
+                android:id="@+id/fragment_filter_attributes"
+                android:name="com.example.myshop.view.fragment.filter.FilterAttributesFragment"
+                class="com.example.myshop.view.fragment.filter.FilterAttributesFragment"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.0" />
+
+            <LinearLayout
+                android:layout_width="40.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+                <fragment
+                    android:id="@+id/fragment_filter_titles"
+                    android:name="com.example.myshop.view.fragment.filter.FilterTitlesFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/filter_btn"
+            android:layout_width="match_parent"
+            android:layout_height="56.0dip"
+            android:layout_alignParentBottom="true"
+            android:background="#ff1e88e5"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:drawableRight="@drawable/hover_oval_drawable"
+            android:backgroundTint="#ff1e88e5"
+            android:text="@string/do_filter"
+            android:textColor="@color/back_withe"
+            android:textSize="17.0sp" />
+
+        <ProgressBar
+            android:id="@+id/filters_primary_progress_bars"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/red_light"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

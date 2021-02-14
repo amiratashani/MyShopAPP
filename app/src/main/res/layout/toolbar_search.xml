@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSearch_t_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbarHeight_actionbar"
+        android:background="#ffffffff"
+        android:elevation="3.0dip"
+        android:padding="0.0dip"
+        app:contentInsetEnd="0.0dip"
+        app:contentInsetStart="0.0dip"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <RelativeLayout
+            android:id="@+id/toolbarSearch_rl_searchBox"
+            android:layout_width="fill_parent"
+            android:layout_height="56.0dip"
+            android:elevation="2.0dip"
+            android:gravity="center_vertical"
+            android:transitionName="searchBox">
+
+            <ImageButton
+                android:id="@+id/toolbarSearch_iv_backButton"
+                android:layout_width="56.0dip"
+                android:layout_height="56.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="0.0dip"
+                android:background="@drawable/hover_oval_dark"
+                android:padding="16.0dip"
+                android:src="@drawable/ic_arrow_back_grey600_24dp" />
+
+            <EditText
+                android:id="@+id/toolbarSearch_tv_searchbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@id/toolbarSearch_iv_backButton"
+                android:background="@null"
+                android:ellipsize="start"
+                android:gravity="right|center"
+                android:hint="@string/hint_searchbox"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColor="@color/adrs_title1"
+                android:textColorHint="@color/gray_500"
+                android:visibility="visible"
+                android:textCursorDrawable="@drawable/cursor_search"
+                android:textSize="14.0sp">
+
+                <requestFocus />
+            </EditText>
+
+            <ImageButton
+                android:id="@+id/toolbarSearch_iv_clearButton"
+                android:layout_width="56.0dip"
+                android:layout_height="56.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/hover_oval_dark"
+                android:src="@drawable/ic_close_grey600_24dp"
+                android:visibility="gone" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progressBar_search"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="1.5dip"
+                android:layout_marginTop="54.5dip"
+                android:indeterminate="true"
+                android:indeterminateTint="#ffd4d4d4"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>

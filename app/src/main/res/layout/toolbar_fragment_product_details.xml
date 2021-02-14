@@ -1,80 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/fragment_details_product_abl"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="56dp"
-   >
+    android:id="@+id/fragment_details_product_abl">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/fragment_details_product_toolbar"
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="productDetailsViewModel"
+            type="com.example.myshop.viewmodel.ProductDetailsViewModel" />
+    </data>
+
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:alpha="0.8"
-        android:background="@drawable/background_gradient_toolbar"
-        android:layout_marginTop="0dp"
-        android:padding="0.0dip"
-        app:contentInsetEnd="0.0dip"
-        app:contentInsetStart="0.0dip"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="56dp">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_details_product_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:alpha="0.8"
+            android:background="@drawable/background_gradient_toolbar"
+            android:padding="0.0dip"
+            app:contentInsetEnd="0.0dip"
+            app:contentInsetStart="0.0dip"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <ImageButton
-                android:id="@+id/activityProductDetails_iv_tree_dots"
-                android:layout_width="48.0dip"
-                android:layout_height="48.0dip"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="4.0dip"
-                android:layout_marginBottom="4.0dip"
-                android:background="@drawable/hover_oval"
-                android:padding="12.0dip"
-                android:src="@drawable/menu" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/activityProductDetails_iv_backupBasket"
-                android:layout_width="48.0dip"
-                android:layout_height="48.0dip"
-                android:layout_marginTop="4.0dip"
-                android:layout_marginBottom="4.0dip"
-                android:layout_toRightOf="@id/activityProductDetails_iv_tree_dots"
-                android:background="@drawable/hover_oval"
-                android:padding="12.0dip"
-                android:src="@drawable/ic_shopping_cart_white_24dp" />
+                <ImageButton
+                    android:id="@+id/activityProductDetails_iv_tree_dots"
+                    android:layout_width="48.0dip"
+                    android:layout_height="48.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="4.0dip"
+                    android:layout_marginBottom="4.0dip"
+                    android:background="@drawable/hover_oval"
+                    android:padding="12.0dip"
+                    android:src="@drawable/menu" />
 
-            <TextView
-                android:id="@+id/activityProductDetails_tv_cartCounter"
-                android:layout_width="20.0dip"
-                android:layout_height="20.0dip"
-                android:layout_marginLeft="-26dip"
-                android:layout_marginTop="7.0dip"
-                android:layout_toRightOf="@id/activityProductDetails_iv_backupBasket"
-                android:background="@drawable/background_cartcounter"
-                android:gravity="center"
-                android:textColor="#ffef394e"
-                android:textSize="11.0sp"
-                android:text="5"
-                android:textStyle="bold"/>
+                <ImageButton
+                    android:id="@+id/activityProductDetails_iv_backupBasket"
+                    android:layout_width="48.0dip"
+                    android:layout_height="48.0dip"
+                    android:layout_marginTop="4.0dip"
+                    android:layout_marginBottom="4.0dip"
+                    android:layout_toRightOf="@id/activityProductDetails_iv_tree_dots"
+                    android:background="@drawable/hover_oval"
+                    android:padding="12.0dip"
+                    android:src="@drawable/ic_shopping_cart_white_24dp" />
 
-            <ImageButton
-                android:layout_width="48.0dip"
-                android:layout_height="48.0dip"
-                android:layout_alignParentRight="true"
-                android:layout_margin="4.0dip"
-                android:background="@drawable/hover_oval"
-                android:padding="12.0dip"
-                android:focusable="true"
-                android:clickable="true"
-                android:scaleType="center"
-                android:src="@drawable/ic_arrow_back_white_24dp" />
+                <TextView
+                    android:id="@+id/toolbar_fragment_product_tv_basketCounter"
+                    android:layout_width="20.0dip"
+                    android:layout_height="20.0dip"
+                    android:layout_marginLeft="-26dip"
+                    android:layout_marginTop="7.0dip"
+                    android:layout_toRightOf="@id/activityProductDetails_iv_backupBasket"
+                    android:background="@drawable/background_cartcounter"
+                    android:gravity="center"
+                    android:text="@{productDetailsViewModel.productsBasketCount.toString()}"
+                    android:textColor="#ffef394e"
+                    android:textSize="11.0sp"
+                    android:textStyle="bold"
+                    android:visibility="@{productDetailsViewModel.productsBasketCount==0 ? View.GONE : View.VISIBLE}" />
+
+                <ImageButton
+                    android:layout_width="48.0dip"
+                    android:layout_height="48.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="4.0dip"
+                    android:background="@drawable/hover_oval"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="12.0dip"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_back_white_24dp" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-</com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

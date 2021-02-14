@@ -1,182 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/product_items_style"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
 
-    <RelativeLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="productDetailsViewModel"
+            type="com.example.myshop.viewmodel.ProductDetailsViewModel" />
+    </data>
+
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/product_items_style"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_vertical">
-
-        <FrameLayout
-            android:id="@+id/frame_layout_image_holder"
-            android:layout_width="124.0dip"
-            android:layout_height="124.0dip"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="8.0dip"
-            android:layout_marginRight="8.0dip"
-            android:minWidth="124.0dip">
-
-            <ImageView
-                android:id="@+id/holder_iv_productImage"
-                android:layout_width="124.0dip"
-                android:layout_height="124.0dip"
-                android:scaleType="centerCrop"
-                android:src="@drawable/alt" />
-
-        </FrameLayout>
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48.0dip"
-            android:layout_marginRight="4.0dip"
-            android:layout_toLeftOf="@id/frame_layout_image_holder"
-            android:minHeight="124.0dip"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:gravity="center_vertical">
 
-            <LinearLayout
-                android:id="@+id/linear_layout_title_holder"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="16.0dip"
+            <FrameLayout
+                android:id="@+id/frame_layout_image_holder"
+                android:layout_width="124.0dip"
+                android:layout_height="124.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
                 android:layout_marginTop="8.0dip"
                 android:layout_marginRight="8.0dip"
-                android:gravity="right"
-                android:orientation="horizontal">
+                android:minWidth="124.0dip">
+
+                <ImageView
+                    android:id="@+id/holder_iv_productImage"
+                    android:layout_width="124.0dip"
+                    android:layout_height="124.0dip"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/alt" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48.0dip"
+                android:layout_marginRight="4.0dip"
+                android:layout_toLeftOf="@id/frame_layout_image_holder"
+                android:minHeight="124.0dip"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_title_holder"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/holder_tv_productName"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4.0dip"
+                        android:layout_weight="1.0"
+                        android:fontFamily="@font/iran_sans"
+                        android:gravity="right"
+                        android:maxLines="2"
+                        android:singleLine="true"
+                        android:textColor="@color/adrs_title1"
+                        android:text="@{productDetailsViewModel.product.name}"
+                        android:textSize="16.0sp" />
+
+
+                    <TextView
+                        android:id="@+id/text_view_sponsor_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@id/holder_tv_productName"
+                        android:background="@drawable/sponsor_round_back"
+                        android:paddingTop="2.0dip"
+                        android:paddingBottom="2.0dip"
+                        android:text="آگهی"
+                        android:textColor="@color/sponsor_ad_text_color"
+                        android:textSize="16.0sp"
+                        android:visibility="gone" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/holder_tv_productName"
-                    android:layout_width="0.0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4.0dip"
-                    android:layout_weight="1.0"
+                    android:id="@+id/text_en_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_below="@id/linear_layout_title_holder"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="4.0dip"
+                    android:layout_marginRight="8.0dip"
                     android:fontFamily="@font/iran_sans"
                     android:gravity="right"
+                    android:lines="2"
                     android:maxLines="2"
-                    android:singleLine="true"
-                    android:textColor="@color/adrs_title1"
-                    android:textSize="16.0sp" />
-
-
-                <TextView
-                    android:id="@+id/text_view_sponsor_badge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignRight="@id/holder_tv_productName"
-                    android:background="@drawable/sponsor_round_back"
-                    android:paddingTop="2.0dip"
-                    android:paddingBottom="2.0dip"
-                    android:text="آگهی"
-                    android:textColor="@color/sponsor_ad_text_color"
-                    android:textSize="16.0sp"
+                    android:textColor="@color/adrs_title3"
+                    android:textSize="12.0sp"
                     android:visibility="gone" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/text_en_title"
-                android:layout_width="fill_parent"
-                android:layout_height="40.0dip"
-                android:layout_below="@id/linear_layout_title_holder"
-                android:layout_marginLeft="16.0dip"
-                android:layout_marginTop="4.0dip"
-                android:layout_marginRight="8.0dip"
-                android:fontFamily="@font/iran_sans"
-                android:gravity="right"
-                android:lines="2"
-                android:maxLines="2"
-                android:textColor="@color/adrs_title3"
-                android:textSize="12.0sp"
-                android:visibility="gone" />
 
 
-            <View
-                android:id="@+id/view_separator"
-                android:layout_width="fill_parent"
-                android:layout_height="1.0dip"
-                android:layout_below="@id/text_en_title"
-                android:layout_marginTop="8.0dip"
-                android:layout_marginBottom="8.0dip"
-                android:background="@color/back_gray" />
-
-            <TextView
-                android:id="@+id/text_special_offer"
-                style="@style/productList_product_items_special_offer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view_separator"
-                android:layout_alignRight="@id/view_separator"
-                android:layout_marginBottom="8.0dip"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/text_view_fake_badge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_special_offer"
-                android:layout_alignRight="@id/text_special_offer"
-                android:paddingLeft="8.0dip"
-                android:paddingRight="5.0dip"
-                android:paddingBottom="2.0dip"
-                android:text="غیراصل"
-                android:textColor="@color/fake_text"
-                android:textSize="14.0sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/text_previous_price"
-                android:layout_width="fill_parent"
-                android:layout_height="20.0dip"
-                android:layout_below="@id/view_separator"
-                android:layout_marginLeft="@dimen/product_list_standard_margin"
-                android:layout_toLeftOf="@id/text_special_offer"
-                android:gravity="left|center"
-                android:singleLine="true"
-                android:textColor="@color/red_light"
-                android:textSize="13.0sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_previous_price"
-                android:orientation="horizontal">
+                <View
+                    android:id="@+id/view_separator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_below="@id/text_en_title"
+                    android:layout_marginTop="8.0dip"
+                    android:layout_marginBottom="8.0dip"
+                    android:background="@color/back_gray" />
 
                 <TextView
+                    android:id="@+id/text_special_offer"
+                    style="@style/productList_product_items_special_offer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/product_list_standard_margin"
-                    android:layout_marginTop="4.0dip"
-                    android:layout_marginBottom="0.0dip"
-                    android:fontFamily="@font/iran_sans"
-                    android:paddingBottom="8.0dip"
-                    android:singleLine="true"
-                    android:text="تومان"
-                    android:textColor="@color/green_light"
-                    android:textSize="15.0sp" />
+                    android:layout_below="@id/view_separator"
+                    android:layout_alignRight="@id/view_separator"
+                    android:layout_marginBottom="8.0dip"
+                    android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/holder_tv_productPrice"
+                    android:id="@+id/text_view_fake_badge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/product_list_standard_margin"
-                    android:layout_marginTop="4.0dip"
-                    android:layout_marginBottom="0.0dip"
-                    android:fontFamily="@font/iran_sans"
-                    android:paddingBottom="8.0dip"
-                    android:singleLine="true"
-                    android:textColor="@color/green_light"
-                    android:textSize="15.0sp" />
-            </LinearLayout>
+                    android:layout_below="@id/text_special_offer"
+                    android:layout_alignRight="@id/text_special_offer"
+                    android:paddingLeft="8.0dip"
+                    android:paddingRight="5.0dip"
+                    android:paddingBottom="2.0dip"
+                    android:text="غیراصل"
+                    android:textColor="@color/fake_text"
+                    android:textSize="14.0sp"
+                    android:visibility="gone" />
 
+                <TextView
+                    android:id="@+id/text_previous_price"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20.0dip"
+                    android:layout_below="@id/view_separator"
+                    android:layout_marginLeft="@dimen/product_list_standard_margin"
+                    android:layout_toLeftOf="@id/text_special_offer"
+                    android:gravity="left|center"
+                    android:singleLine="true"
+                    android:textColor="@color/red_light"
+                    android:textSize="13.0sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_previous_price"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/product_list_standard_margin"
+                        android:layout_marginTop="4.0dip"
+                        android:layout_marginBottom="0.0dip"
+                        android:fontFamily="@font/iran_sans"
+                        android:paddingBottom="8.0dip"
+                        android:singleLine="true"
+                        android:text="تومان"
+                        android:textColor="@color/green_light"
+                        android:textSize="15.0sp" />
+
+                    <TextView
+                        android:id="@+id/holder_tv_productPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/product_list_standard_margin"
+                        android:layout_marginTop="4.0dip"
+                        android:layout_marginBottom="0.0dip"
+                        android:fontFamily="@font/iran_sans"
+                        android:paddingBottom="8.0dip"
+                        android:singleLine="true"
+                        android:text="@{productDetailsViewModel.product.price}"
+                        android:textColor="@color/green_light"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-    </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

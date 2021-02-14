@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@color/white_pure"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/product_list_standard_margin"
+        android:paddingRight="@dimen/product_list_standard_margin">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/attribute_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/product_list_standard_margin"
+            android:layout_marginRight="@dimen/product_list_standard_margin"
+            android:button="@drawable/customdrawablecheckbox"
+            android:gravity="start|center" />
+
+        <TextView
+
+            android:id="@+id/attribute_title_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/product_list_standard_margin"
+            android:layout_marginRight="@dimen/product_list_standard_margin"
+            android:layout_toEndOf="@id/attribute_checkbox"
+            android:ellipsize="start"
+            android:gravity="start"
+            android:maxLines="2"
+            android:textColor="@color/black_light"
+            android:textSize="14.0sp" />
+    </RelativeLayout>
+</layout>
